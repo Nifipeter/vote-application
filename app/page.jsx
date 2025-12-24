@@ -19,10 +19,80 @@ export default function Home() {
     },
   ];
 
+  const features = [
+    {
+      title: "Real-time clarity",
+      description:
+        "See percentages update as votes come in so everyone stays aligned and informed.",
+    },
+    {
+      title: "Share-ready links",
+      description:
+        "Instantly share a secure link to invite your team, clients, or community to weigh in.",
+    },
+    {
+      title: "Designed for speed",
+      description:
+        "Zero clutter, crisp typography, and spacing that make every choice obvious on any device.",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-50 via-white to-zinc-100 text-zinc-900">
-      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-6 py-16 sm:py-20 lg:py-24">
-        <header className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+    <div className="min-h-screen bg-linear-to-b from-zinc-50 via-white to-zinc-100 text-zinc-900">
+      <div className="mx-auto max-w-6xl px-6">
+        <nav className="sticky top-0 z-20 flex items-center justify-between border-b border-white/70 bg-white/80 py-4 backdrop-blur">
+          <div className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-zinc-900 text-lg font-semibold text-white">
+              V
+            </span>
+            <div className="leading-tight">
+              <p className="text-base font-semibold text-zinc-900">Vote</p>
+              <p className="text-xs text-zinc-500">Decide together, quickly.</p>
+            </div>
+          </div>
+          <div className="hidden items-center gap-6 text-sm font-medium text-zinc-600 sm:flex">
+            <a className="transition-colors hover:text-zinc-900" href="#hero">
+              Overview
+            </a>
+            <a
+              className="transition-colors hover:text-zinc-900"
+              href="#preview"
+            >
+              Preview
+            </a>
+            <a
+              className="transition-colors hover:text-zinc-900"
+              href="#features"
+            >
+              Features
+            </a>
+            <a className="transition-colors hover:text-zinc-900" href="#steps">
+              How it works
+            </a>
+          </div>
+          <button
+            type="button"
+            className="inline-flex items-center justify-center gap-3 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-black/10 transition-transform transition-shadow duration-200 hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+          >
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="h-4 w-4 fill-white"
+              >
+                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.07-.73.08-.72.08-.72 1.19.08 1.82 1.22 1.82 1.22 1.05 1.81 2.75 1.29 3.42.99.11-.77.41-1.29.74-1.59-2.55-.29-5.23-1.28-5.23-5.71 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.5.11-3.12 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.96.13 2.88.39 2.21-1.49 3.18-1.18 3.18-1.18.63 1.62.23 2.82.11 3.12.75.81 1.2 1.84 1.2 3.1 0 4.44-2.68 5.41-5.24 5.7.42.36.79 1.07.79 2.16 0 1.56-.02 2.82-.02 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+              </svg>
+            </span>
+            <span>Sign in with GitHub</span>
+          </button>
+        </nav>
+      </div>
+
+      <main className="mx-auto flex max-w-6xl flex-col gap-20 px-6 pb-20 pt-12 sm:pt-16 lg:pt-20">
+        <header
+          id="hero"
+          className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center"
+        >
           <div className="space-y-8">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
               Vote application
@@ -74,7 +144,10 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/90 p-8 shadow-2xl shadow-zinc-300/40 backdrop-blur lg:p-10">
+          <div
+            id="preview"
+            className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/90 p-8 shadow-2xl shadow-zinc-300/40 backdrop-blur lg:p-10"
+          >
             <div
               className="absolute inset-0 bg-gradient-to-br from-zinc-50 via-white to-zinc-100"
               aria-hidden="true"
@@ -141,7 +214,40 @@ export default function Home() {
           </div>
         </header>
 
-        <section className="space-y-6">
+        <section id="features" className="space-y-6">
+          <div className="space-y-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
+              Features
+            </p>
+            <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
+              A calm space for clear votes
+            </h2>
+            <p className="max-w-3xl text-base leading-relaxed text-zinc-600 sm:text-lg">
+              Everything you need to publish a poll that feels intentional,
+              polished, and ready for every device.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="rounded-2xl border border-zinc-200 bg-white/90 p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-900 text-sm font-semibold text-white shadow-sm shadow-zinc-900/10">
+                  {feature.title.slice(0, 1)}
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-zinc-900">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="steps" className="space-y-6">
           <div className="space-y-2">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
               How it works
@@ -173,7 +279,71 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        <section
+          id="cta"
+          className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/90 px-8 py-10 shadow-xl shadow-zinc-300/40 backdrop-blur sm:px-10"
+        >
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-zinc-50 via-white to-zinc-100"
+            aria-hidden="true"
+          />
+          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
+                Ready to publish?
+              </p>
+              <h3 className="text-2xl font-semibold text-zinc-900 sm:text-3xl">
+                Launch your next poll in under a minute.
+              </h3>
+              <p className="max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg">
+                Keep your team moving with a focused experience that makes every
+                vote clear, fair, and fast.
+              </p>
+            </div>
+            <button
+              type="button"
+              className="inline-flex items-center justify-center gap-3 self-start rounded-full bg-black px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/10 transition-transform transition-shadow duration-200 hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            >
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10">
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5 fill-white"
+                >
+                  <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.07-.73.08-.72.08-.72 1.19.08 1.82 1.22 1.82 1.22 1.05 1.81 2.75 1.29 3.42.99.11-.77.41-1.29.74-1.59-2.55-.29-5.23-1.28-5.23-5.71 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.5.11-3.12 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.96.13 2.88.39 2.21-1.49 3.18-1.18 3.18-1.18.63 1.62.23 2.82.11 3.12.75.81 1.2 1.84 1.2 3.1 0 4.44-2.68 5.41-5.24 5.7.42.36.79 1.07.79 2.16 0 1.56-.02 2.82-.02 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                </svg>
+              </span>
+              <span className="text-base">Sign in with GitHub</span>
+            </button>
+          </div>
+        </section>
       </main>
+
+      <footer className="border-t border-white/70 bg-white/80 py-8 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-base font-semibold text-zinc-900">Vote</p>
+            <p className="text-sm text-zinc-500">
+              A minimal voting experience for fast decisions.
+            </p>
+          </div>
+          <div className="flex items-center gap-5 text-sm text-zinc-600">
+            <a
+              className="transition-colors hover:text-zinc-900"
+              href="#features"
+            >
+              Features
+            </a>
+            <a className="transition-colors hover:text-zinc-900" href="#steps">
+              How it works
+            </a>
+            <a className="transition-colors hover:text-zinc-900" href="#cta">
+              Get started
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
