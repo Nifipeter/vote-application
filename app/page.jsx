@@ -19,7 +19,6 @@ import Toggle from "./components/toggle";
 export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 overflow-x-hidden">
-      {/* Fixed Floating Navigation */}
       <nav className="fixed top-4 left-4 right-4 z-50 border border-zinc-200 dark:border-zinc-700 bg-white/80 dark:bg-zinc-800/80 backdrop-blur-md rounded-2xl shadow-lg">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 py-3.5 flex items-center justify-between w-full">
           <div className="flex items-center gap-3 min-w-0">
@@ -68,7 +67,6 @@ export default function Home() {
       </nav>
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 w-full overflow-x-hidden pt-20">
-        {/* Hero Section */}
         <section className="grid gap-16 lg:grid-cols-2 lg:items-center py-24 sm:py-32">
           <div className="space-y-8">
             <div className="space-y-5">
@@ -114,7 +112,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hero Mockup */}
           <div className="relative">
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl -z-10"></div>
             <div className="relative rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-2xl overflow-hidden">
@@ -185,7 +182,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Social Proof */}
         <div className="grid grid-cols-3 gap-8 py-16 border-t border-b border-zinc-200 dark:border-zinc-700">
           <div className="text-center">
             <p className="text-4xl sm:text-5xl font-bold text-blue-600 dark:text-blue-400">
@@ -288,7 +284,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* How It Works */}
         <section className="py-32">
           <div className="text-center mb-20">
             <span className="inline-block text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-4">
@@ -343,7 +338,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pricing */}
         <section id="pricing" className="py-32">
           <div className="text-center mb-20">
             <span className="inline-block text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-4">
@@ -445,7 +439,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FAQ */}
         <section id="faq" className="py-32">
           <div className="text-center mb-20">
             <span className="inline-block text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-4">
@@ -497,7 +490,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA Footer */}
         <section className="rounded-2xl border border-blue-700 dark:border-blue-600 bg-linear-to-br from-blue-600 to-blue-700 dark:from-blue-800 dark:to-blue-700 px-6 sm:px-12 py-20 text-center text-white mb-20 mx-auto max-w-6xl">
           <h2 className="text-5xl sm:text-6xl font-black mb-4">
             Ready to decide better?
@@ -516,7 +508,6 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 py-16 overflow-x-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 w-full">
           <div className="grid sm:grid-cols-5 gap-8 mb-12">
