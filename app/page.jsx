@@ -9,82 +9,85 @@ import {
   Users,
   BarChart3,
   Shield,
+  Sparkles,
+  TrendingUp,
+  Heart,
 } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-indigo-50/30 to-white text-zinc-900">
+    <div className="min-h-screen bg-white text-zinc-900 overflow-x-hidden">
       {/* Sticky Navigation */}
-      <nav className="sticky top-0 z-50 mx-auto max-w-6xl px-6 py-4">
-        <div className="flex items-center justify-between rounded-2xl border border-white/70 bg-white/80 px-6 py-3 shadow-lg shadow-indigo-100/40 backdrop-blur-md">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-indigo-700 text-lg font-bold text-white">
+      <nav className="sticky top-0 z-50 border-b border-zinc-100 bg-white/95 backdrop-blur-sm overflow-x-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4 flex items-center justify-between w-full">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="flex h-9 w-9 items-center justify-center flex-shrink-0 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 text-base font-bold text-white">
               V
             </div>
-            <div className="leading-tight hidden sm:block">
-              <p className="text-base font-semibold text-zinc-900">Votely</p>
-              <p className="text-xs text-zinc-600">
-                Smart voting, clear decisions
-              </p>
+            <div className="hidden sm:block leading-tight">
+              <p className="text-sm font-bold text-zinc-900">Votely</p>
+              <p className="text-xs text-zinc-500">Decisions made clear</p>
             </div>
           </div>
-          <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-700">
-            <a href="#features" className="hover:text-indigo-600 transition">
+          <div className="hidden lg:flex items-center gap-10 text-sm font-medium text-zinc-600">
+            <a href="#features" className="hover:text-blue-600 transition">
               Features
             </a>
-            <a href="#pricing" className="hover:text-indigo-600 transition">
+            <a href="#pricing" className="hover:text-blue-600 transition">
               Pricing
             </a>
-            <a href="#faq" className="hover:text-indigo-600 transition">
+            <a href="#faq" className="hover:text-blue-600 transition">
               FAQ
             </a>
           </div>
-          <button className="rounded-full bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-200 hover:shadow-xl hover:-translate-y-0.5 transition">
+          <button className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition shadow-sm hover:shadow-md flex-shrink-0">
             Get Started
           </button>
         </div>
       </nav>
 
-      <main className="mx-auto max-w-6xl px-6 py-16 sm:py-24">
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 w-full overflow-x-hidden">
         {/* Hero Section */}
-        <section className="grid gap-12 lg:grid-cols-2 lg:items-center mb-32">
+        <section className="grid gap-16 lg:grid-cols-2 lg:items-center py-24 sm:py-32">
           <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="inline-block">
-                <span className="rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-semibold text-indigo-700 border border-indigo-100">
-                  ✨ Fast decisions, verified results
-                </span>
+            <div className="space-y-5">
+              <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3.5 py-1.5 text-xs font-semibold text-blue-700 border border-blue-200">
+                <Sparkles className="w-3.5 h-3.5" />
+                Smart voting platform
               </div>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
-                Voting That
-                <span className="block bg-gradient-to-r from-indigo-600 to-indigo-500 bg-clip-text text-transparent">
-                  Actually Works
+              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-tight">
+                Make Better
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500">
+                  Decisions
                 </span>
               </h1>
-              <p className="text-lg sm:text-xl text-zinc-600 leading-relaxed max-w-xl">
-                Create secure polls, gather instant feedback, and make decisions
-                together. No complexity, no friction—just clear results everyone
-                can trust.
+              <p className="text-lg sm:text-xl text-zinc-600 leading-relaxed max-w-lg">
+                Real-time polls with instant results. Create, share, and decide
+                together with complete transparency and security.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="rounded-full bg-indigo-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-indigo-200 hover:shadow-xl hover:-translate-y-0.5 transition flex items-center justify-center gap-2">
-                Start Voting Free
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button className="rounded-lg bg-blue-600 px-8 py-3.5 text-base font-semibold text-white hover:bg-blue-700 transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                Start Creating Polls
                 <ArrowRight className="w-4 h-4" />
               </button>
-              <button className="rounded-full bg-white px-8 py-4 text-base font-semibold text-indigo-600 border-2 border-indigo-600 hover:bg-indigo-50 transition">
-                Watch Demo
+              <button className="rounded-lg bg-zinc-100 px-8 py-3.5 text-base font-semibold text-zinc-900 hover:bg-zinc-200 transition">
+                View Demo
               </button>
             </div>
 
-            <div className="flex items-center gap-6 text-sm text-zinc-600">
+            <div className="flex items-center gap-8 text-sm text-zinc-600 border-t border-zinc-200 pt-8">
               <div className="flex items-center gap-2">
-                <Lock className="w-4 h-4 text-indigo-600" />
-                <span>End-to-end encrypted</span>
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
+                  <Lock className="w-4 h-4 text-blue-600" />
+                </div>
+                <span>256-bit encrypted</span>
               </div>
               <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-indigo-600" />
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
+                  <Zap className="w-4 h-4 text-blue-600" />
+                </div>
                 <span>Instant results</span>
               </div>
             </div>
@@ -92,57 +95,61 @@ export default function Home() {
 
           {/* Hero Mockup */}
           <div className="relative">
-            <div className="absolute -top-20 -right-20 w-80 h-80 bg-indigo-200/30 rounded-full blur-3xl -z-10"></div>
-            <div className="relative rounded-3xl border border-white/70 bg-white/90 shadow-2xl shadow-indigo-200/50 backdrop-blur-xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-white" />
-              <div className="relative p-6 sm:p-8 space-y-4">
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl -z-10"></div>
+            <div className="relative rounded-2xl border border-zinc-200 bg-white shadow-2xl overflow-hidden">
+              <div className="p-6 sm:p-8 space-y-5">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-zinc-800">
-                    Company Meeting Poll
-                  </span>
-                  <span className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold">
-                    <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse" />
-                    Live
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                    <span className="text-sm font-semibold text-zinc-700">
+                      Team Meeting Poll
+                    </span>
+                  </div>
+                  <span className="text-xs font-semibold text-zinc-500 bg-zinc-100 px-2.5 py-1 rounded-full">
+                    5 mins ago
                   </span>
                 </div>
-                <p className="text-sm font-semibold text-zinc-700">
-                  When should we have our next team lunch?
-                </p>
-                <div className="space-y-3">
+                <div className="space-y-1">
+                  <p className="text-sm font-semibold text-zinc-800">
+                    Best time for weekly standup?
+                  </p>
+                  <p className="text-xs text-zinc-500">342 responses</p>
+                </div>
+                <div className="space-y-4">
                   {[
-                    { label: "This Friday", votes: 48 },
-                    { label: "Next Monday", votes: 32 },
-                    { label: "Following Week", votes: 20 },
+                    { label: "9:00 AM", votes: 58 },
+                    { label: "10:30 AM", votes: 28 },
+                    { label: "2:00 PM", votes: 14 },
                   ].map((option) => (
                     <div key={option.label} className="space-y-2">
-                      <div className="flex justify-between text-xs font-semibold text-zinc-700">
-                        <span>{option.label}</span>
-                        <span>{option.votes}%</span>
+                      <div className="flex justify-between text-sm">
+                        <span className="font-medium text-zinc-700">
+                          {option.label}
+                        </span>
+                        <span className="font-semibold text-zinc-900">
+                          {option.votes}%
+                        </span>
                       </div>
-                      <div className="w-full h-2 bg-zinc-100 rounded-full overflow-hidden">
+                      <div className="w-full h-2.5 bg-zinc-100 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-gradient-to-r from-indigo-600 to-indigo-500 rounded-full"
+                          className="h-full bg-gradient-to-r from-blue-600 to-blue-500 rounded-full"
                           style={{ width: `${option.votes}%` }}
                         />
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="grid grid-cols-2 gap-3 pt-2">
-                  <div className="rounded-lg bg-indigo-50 border border-indigo-100 p-3">
-                    <p className="text-xs text-zinc-600 font-medium">
-                      Total Votes
-                    </p>
-                    <p className="text-lg font-bold text-indigo-600 mt-1">
-                      342
-                    </p>
-                  </div>
-                  <div className="rounded-lg bg-indigo-50 border border-indigo-100 p-3">
+                <div className="grid grid-cols-2 gap-3 pt-3 border-t border-zinc-200">
+                  <div className="rounded-lg bg-zinc-50 p-3">
                     <p className="text-xs text-zinc-600 font-medium">
                       Participation
                     </p>
-                    <p className="text-lg font-bold text-indigo-600 mt-1">
-                      89%
+                    <p className="text-lg font-bold text-blue-600 mt-1">94%</p>
+                  </div>
+                  <div className="rounded-lg bg-zinc-50 p-3">
+                    <p className="text-xs text-zinc-600 font-medium">Status</p>
+                    <p className="text-lg font-bold text-green-600 mt-1">
+                      Live
                     </p>
                   </div>
                 </div>
@@ -151,94 +158,95 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Stats Bar */}
-        <div className="grid grid-cols-3 gap-6 mb-32 py-12 border-y border-indigo-100/50">
+        {/* Social Proof */}
+        <div className="grid grid-cols-3 gap-8 py-16 border-t border-b border-zinc-200">
           <div className="text-center">
-            <p className="text-3xl sm:text-4xl font-bold text-indigo-600">
-              50k+
+            <p className="text-4xl sm:text-5xl font-bold text-blue-600">
+              100k+
             </p>
-            <p className="text-sm text-zinc-600 mt-2">Polls Created</p>
+            <p className="text-sm text-zinc-600 mt-2 font-medium">
+              Active Users
+            </p>
           </div>
           <div className="text-center">
-            <p className="text-3xl sm:text-4xl font-bold text-indigo-600">
-              2M+
-            </p>
-            <p className="text-sm text-zinc-600 mt-2">Total Votes</p>
+            <p className="text-4xl sm:text-5xl font-bold text-blue-600">5M+</p>
+            <p className="text-sm text-zinc-600 mt-2 font-medium">Votes Cast</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl sm:text-4xl font-bold text-indigo-600">
+            <p className="text-4xl sm:text-5xl font-bold text-blue-600">
               99.9%
             </p>
-            <p className="text-sm text-zinc-600 mt-2">Uptime SLA</p>
+            <p className="text-sm text-zinc-600 mt-2 font-medium">Uptime SLA</p>
           </div>
         </div>
 
         {/* Features Section */}
-        <section id="features" className="mb-32">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4 border border-indigo-100">
-              Features
+        <section id="features" className="py-32">
+          <div className="text-center mb-20">
+            <span className="inline-block text-xs font-bold text-blue-600 uppercase tracking-widest mb-4">
+              → Features
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <h2 className="text-5xl sm:text-6xl font-black tracking-tight mb-6">
               Everything you need
             </h2>
-            <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
-              Powerful features designed to make voting simple, secure, and
-              trustworthy for everyone.
+            <p className="text-lg text-zinc-600 max-w-2xl mx-auto leading-relaxed">
+              Powerful, intuitive tools built for teams that value clarity and
+              trust in their decision-making process.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                icon: Zap,
-                title: "Real-time Results",
+                icon: TrendingUp,
+                title: "Real-time Analytics",
                 description:
-                  "See votes come in live with beautiful charts and instant updates",
+                  "Watch votes update live with beautiful, interactive charts and detailed breakdowns",
               },
               {
                 icon: Shield,
-                title: "Fully Secure",
+                title: "Bank-level Security",
                 description:
-                  "End-to-end encryption keeps every vote safe and anonymous",
+                  "Enterprise-grade encryption ensures every vote stays private and authentic",
               },
               {
                 icon: Users,
-                title: "Easy to Share",
+                title: "Easy Collaboration",
                 description:
-                  "One-click sharing makes it simple to invite participants",
+                  "Share polls instantly via link, QR code, or email to get responses fast",
               },
               {
                 icon: BarChart3,
-                title: "Smart Analytics",
+                title: "Advanced Insights",
                 description:
-                  "Detailed insights help you understand voting patterns",
+                  "Export detailed reports and understand voting patterns with smart analytics",
               },
               {
                 icon: Globe,
-                title: "Works Anywhere",
-                description: "Mobile-optimized interface works on all devices",
+                title: "Mobile First",
+                description:
+                  "Responsive design works perfectly on desktop, tablet, and smartphone",
               },
               {
-                icon: Lock,
-                title: "Verified",
+                icon: Heart,
+                title: "User Friendly",
                 description:
-                  "Blockchain-backed verification for complete transparency",
+                  "Intuitive interface that anyone can use with zero learning curve",
               },
             ].map((feature, idx) => {
               const Icon = feature.icon;
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-indigo-100/50 bg-white/70 p-8 hover:shadow-lg hover:-translate-y-1 transition"
+                  className="rounded-xl border border-zinc-200 bg-white p-7 hover:border-blue-300 hover:shadow-lg transition group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 to-indigo-500 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-white" />
+                  <div className="w-11 h-11 rounded-lg bg-blue-100 flex items-center justify-center mb-4 group-hover:bg-blue-600 transition">
+                    <Icon className="w-5 h-5 text-blue-600 group-hover:text-white transition" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-zinc-900">
+                  <h3 className="text-lg font-bold mb-2 text-zinc-900">
                     {feature.title}
                   </h3>
-                  <p className="text-zinc-600 leading-relaxed">
+                  <p className="text-zinc-600 leading-relaxed text-sm">
                     {feature.description}
                   </p>
                 </div>
@@ -248,12 +256,12 @@ export default function Home() {
         </section>
 
         {/* How It Works */}
-        <section className="mb-32">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4 border border-indigo-100">
-              How It Works
+        <section className="py-32">
+          <div className="text-center mb-20">
+            <span className="inline-block text-xs font-bold text-blue-600 uppercase tracking-widest mb-4">
+              → Process
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <h2 className="text-5xl sm:text-6xl font-black tracking-tight mb-6">
               Three simple steps
             </h2>
           </div>
@@ -261,34 +269,38 @@ export default function Home() {
           <div className="grid sm:grid-cols-3 gap-8">
             {[
               {
-                num: "1",
+                num: "01",
                 title: "Create",
                 desc: "Write your question and add options in seconds",
+                icon: "✏️",
               },
               {
-                num: "2",
+                num: "02",
                 title: "Share",
-                desc: "Invite people via link, email, or QR code",
+                desc: "Invite participants via link, QR, or email",
+                icon: "🔗",
               },
               {
-                num: "3",
-                title: "Decide",
-                desc: "Get instant results and export for records",
+                num: "03",
+                title: "Analyze",
+                desc: "Get instant results and export comprehensive reports",
+                icon: "📊",
               },
             ].map((step, idx) => (
               <div key={idx} className="relative">
-                <div className="rounded-2xl border border-indigo-100/50 bg-gradient-to-br from-indigo-50 to-white p-8 text-center">
-                  <div className="w-16 h-16 rounded-full bg-indigo-600 text-white flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-indigo-200">
+                <div className="rounded-xl border border-zinc-200 bg-white p-8 text-center hover:shadow-lg transition">
+                  <div className="text-4xl mb-4">{step.icon}</div>
+                  <p className="text-5xl font-black text-blue-600 mb-4 opacity-20">
                     {step.num}
-                  </div>
+                  </p>
                   <h3 className="text-2xl font-bold mb-3 text-zinc-900">
                     {step.title}
                   </h3>
-                  <p className="text-zinc-600">{step.desc}</p>
+                  <p className="text-zinc-600 leading-relaxed">{step.desc}</p>
                 </div>
                 {idx < 2 && (
-                  <div className="hidden sm:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-indigo-300">
-                    <ArrowRight className="w-8 h-8" />
+                  <div className="hidden sm:flex absolute top-1/2 -right-4 transform -translate-y-1/2 text-zinc-300">
+                    <ArrowRight className="w-6 h-6" />
                   </div>
                 )}
               </div>
@@ -297,20 +309,20 @@ export default function Home() {
         </section>
 
         {/* Pricing */}
-        <section id="pricing" className="mb-32">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4 border border-indigo-100">
-              Pricing
+        <section id="pricing" className="py-32">
+          <div className="text-center mb-20">
+            <span className="inline-block text-xs font-bold text-blue-600 uppercase tracking-widest mb-4">
+              → Pricing
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Simple, transparent pricing
+            <h2 className="text-5xl sm:text-6xl font-black tracking-tight mb-6">
+              Plans for every team
             </h2>
             <p className="text-lg text-zinc-600">
-              Start free, scale as you grow.
+              Start free, scale as you grow. No credit card required.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
               {
                 name: "Starter",
@@ -318,19 +330,20 @@ export default function Home() {
                 features: [
                   "Up to 100 voters",
                   "Unlimited polls",
-                  "Basic analytics",
+                  "Basic charts",
                   "Email support",
                 ],
               },
               {
-                name: "Pro",
-                price: "$29",
+                name: "Professional",
+                price: "$39",
                 period: "/month",
                 features: [
-                  "Up to 5,000 voters",
+                  "Up to 10,000 voters",
                   "Advanced analytics",
                   "Custom branding",
                   "Priority support",
+                  "API access",
                 ],
                 popular: true,
               },
@@ -342,49 +355,50 @@ export default function Home() {
                   "Custom features",
                   "Dedicated support",
                   "SLA guarantee",
+                  "On-premise option",
                 ],
               },
             ].map((plan, idx) => (
               <div
                 key={idx}
-                className={`rounded-2xl p-8 transition ${
+                className={`rounded-xl border p-8 transition ${
                   plan.popular
-                    ? "border-2 border-indigo-600 bg-gradient-to-br from-indigo-50 to-white shadow-xl shadow-indigo-200/50"
-                    : "border border-indigo-100/50 bg-white/70"
+                    ? "border-blue-600 bg-gradient-to-br from-blue-50 to-white shadow-2xl scale-105"
+                    : "border-zinc-200 bg-white hover:shadow-lg"
                 }`}
               >
                 {plan.popular && (
-                  <span className="inline-block bg-indigo-600 text-white px-4 py-1 rounded-full text-xs font-bold mb-4">
+                  <span className="inline-block bg-blue-600 text-white px-3.5 py-1 rounded-full text-xs font-bold mb-4">
                     Most Popular
                   </span>
                 )}
                 <h3 className="text-2xl font-bold mb-2 text-zinc-900">
                   {plan.name}
                 </h3>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-indigo-600">
+                <div className="mb-8">
+                  <span className="text-5xl font-black text-zinc-900">
                     {plan.price}
                   </span>
                   {plan.period && (
-                    <span className="text-zinc-600">{plan.period}</span>
+                    <span className="text-zinc-600 ml-1">{plan.period}</span>
                   )}
                 </div>
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8 border-t border-zinc-200 pt-8">
                   {plan.features.map((feature, fidx) => (
                     <li
                       key={fidx}
                       className="flex items-center gap-3 text-zinc-700"
                     >
-                      <Check className="w-5 h-5 text-indigo-600 flex-shrink-0" />
-                      {feature}
+                      <Check className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                      <span className="text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <button
                   className={`w-full rounded-lg py-3 font-semibold transition ${
                     plan.popular
-                      ? "bg-indigo-600 text-white hover:shadow-lg hover:-translate-y-0.5"
-                      : "bg-white text-indigo-600 border-2 border-indigo-600 hover:bg-indigo-50"
+                      ? "bg-blue-600 text-white hover:bg-blue-700"
+                      : "bg-zinc-100 text-zinc-900 hover:bg-zinc-200"
                   }`}
                 >
                   Get Started
@@ -395,142 +409,180 @@ export default function Home() {
         </section>
 
         {/* FAQ */}
-        <section id="faq" className="mb-32">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4 border border-indigo-100">
-              FAQ
+        <section id="faq" className="py-32">
+          <div className="text-center mb-20">
+            <span className="inline-block text-xs font-bold text-blue-600 uppercase tracking-widest mb-4">
+              → Support
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold">Common questions</h2>
+            <h2 className="text-5xl sm:text-6xl font-black tracking-tight mb-6">
+              Frequently asked questions
+            </h2>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="max-w-3xl mx-auto space-y-3">
             {[
               {
-                q: "Is my vote anonymous?",
-                a: "Yes, your identity is kept separate from your vote. Only the results are public.",
+                q: "Is voting truly anonymous?",
+                a: "Yes. We separate voter identity from vote data using industry-standard encryption. Only aggregate results are visible.",
               },
               {
-                q: "Can I close a poll early?",
-                a: "Absolutely. You can end a poll anytime and still share results with participants.",
+                q: "Can I edit results after voting closes?",
+                a: "No. Once a poll closes, results are locked and immutable. You can view historical data anytime.",
               },
               {
-                q: "What devices are supported?",
-                a: "Votely works on all modern browsers and devices—desktop, tablet, and mobile.",
+                q: "What happens to my data?",
+                a: "Your data is encrypted end-to-end and stored securely. We never sell or share your information with third parties.",
               },
               {
-                q: "How do I export results?",
-                a: "Download results as CSV, PDF, or share via link. All formats include full voting data.",
+                q: "Does Votely work offline?",
+                a: "Polls must be created and voted on with an internet connection, but results sync automatically once reconnected.",
+              },
+              {
+                q: "How many people can vote?",
+                a: "Starter plan supports 100 voters, Pro supports 10k, and Enterprise supports unlimited participants.",
               },
             ].map((item, idx) => (
               <details
                 key={idx}
-                className="group rounded-lg border border-indigo-100/50 bg-white/70 p-6 hover:shadow-md transition"
+                className="group rounded-lg border border-zinc-200 bg-white p-6 hover:border-blue-300 hover:shadow-md transition cursor-pointer"
               >
                 <summary className="flex cursor-pointer items-center justify-between font-semibold text-zinc-900">
-                  <span>{item.q}</span>
-                  <span className="text-indigo-600 group-open:rotate-45 transition">
+                  <span className="text-lg">{item.q}</span>
+                  <span className="text-2xl text-blue-600 group-open:rotate-45 transition flex-shrink-0">
                     +
                   </span>
                 </summary>
-                <p className="mt-4 text-zinc-600 leading-relaxed">{item.a}</p>
+                <p className="mt-4 text-zinc-600 leading-relaxed text-base">
+                  {item.a}
+                </p>
               </details>
             ))}
           </div>
         </section>
 
         {/* CTA Footer */}
-        <section className="rounded-3xl border border-indigo-200 bg-gradient-to-br from-indigo-600 to-indigo-700 px-8 sm:px-12 py-16 text-center text-white">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Ready to make better decisions?
+        <section className="rounded-2xl border border-zinc-200 bg-gradient-to-br from-blue-600 to-blue-700 px-6 sm:px-12 py-20 text-center text-white mb-20 mx-auto max-w-6xl">
+          <h2 className="text-5xl sm:text-6xl font-black mb-4">
+            Ready to decide better?
           </h2>
-          <p className="text-lg text-indigo-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of teams using Votely for faster, transparent
-            decision-making.
+          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Join thousands of teams making faster, smarter decisions with
+            Votely.
           </p>
-          <button className="rounded-full bg-white text-indigo-600 px-8 py-4 text-base font-semibold hover:shadow-xl hover:-translate-y-0.5 transition flex items-center justify-center gap-2 mx-auto">
-            Start Your Free Poll Today
-            <ArrowRight className="w-4 h-4" />
+          <button className="rounded-lg bg-white text-blue-600 px-10 py-4 text-lg font-bold hover:bg-blue-50 transition shadow-lg hover:shadow-xl inline-flex items-center gap-2">
+            Start Free Now
+            <ArrowRight className="w-5 h-5" />
           </button>
+          <p className="text-blue-100 text-sm mt-6">
+            No credit card required. Start with 100 voters free.
+          </p>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-indigo-100/50 bg-white/80 backdrop-blur mt-20 py-12">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid sm:grid-cols-4 gap-8 mb-8">
-            <div>
+      <footer className="border-t border-zinc-200 bg-zinc-50 py-16 overflow-x-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 w-full">
+          <div className="grid sm:grid-cols-5 gap-8 mb-12">
+            <div className="sm:col-span-1">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-lg font-bold">
+                <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm font-bold">
                   V
                 </div>
                 <span className="font-bold text-zinc-900">Votely</span>
               </div>
-              <p className="text-sm text-zinc-600">
-                Smart voting for better decisions.
+              <p className="text-sm text-zinc-600 leading-relaxed">
+                The modern way to make decisions together.
               </p>
             </div>
             <div>
-              <p className="text-sm font-semibold text-zinc-900 mb-4">
+              <p className="text-xs font-bold text-zinc-900 mb-4 uppercase tracking-wider">
                 Product
               </p>
-              <ul className="space-y-2 text-sm text-zinc-600">
+              <ul className="space-y-2.5 text-sm text-zinc-600">
                 <li>
-                  <a href="#features" className="hover:text-indigo-600">
+                  <a
+                    href="#features"
+                    className="hover:text-blue-600 transition"
+                  >
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" className="hover:text-indigo-600">
+                  <a href="#pricing" className="hover:text-blue-600 transition">
                     Pricing
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-indigo-600">
+                  <a href="#" className="hover:text-blue-600 transition">
                     Security
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-blue-600 transition">
+                    Roadmap
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-sm font-semibold text-zinc-900 mb-4">
+              <p className="text-xs font-bold text-zinc-900 mb-4 uppercase tracking-wider">
                 Company
               </p>
-              <ul className="space-y-2 text-sm text-zinc-600">
+              <ul className="space-y-2.5 text-sm text-zinc-600">
                 <li>
-                  <a href="#" className="hover:text-indigo-600">
+                  <a href="#" className="hover:text-blue-600 transition">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-blue-600 transition">
                     Blog
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-indigo-600">
+                  <a href="#" className="hover:text-blue-600 transition">
                     Careers
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-indigo-600">
+                  <a href="#" className="hover:text-blue-600 transition">
                     Contact
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-sm font-semibold text-zinc-900 mb-4">Legal</p>
-              <ul className="space-y-2 text-sm text-zinc-600">
+              <p className="text-xs font-bold text-zinc-900 mb-4 uppercase tracking-wider">
+                Legal
+              </p>
+              <ul className="space-y-2.5 text-sm text-zinc-600">
                 <li>
-                  <a href="#" className="hover:text-indigo-600">
+                  <a href="#" className="hover:text-blue-600 transition">
                     Privacy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-indigo-600">
+                  <a href="#" className="hover:text-blue-600 transition">
                     Terms
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-blue-600 transition">
+                    Cookies
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-blue-600 transition">
+                    Compliance
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-indigo-100/50 pt-8 text-center text-sm text-zinc-600">
-            <p>&copy; 2025 Votely. All rights reserved.</p>
+          <div className="border-t border-zinc-200 pt-8">
+            <p className="text-sm text-zinc-600 text-center">
+              &copy; 2025 Votely. All rights reserved. Made with precision.
+            </p>
           </div>
         </div>
       </footer>
