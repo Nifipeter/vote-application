@@ -38,7 +38,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-zinc-50 via-white to-zinc-100 text-zinc-900">
+    <div className="min-h-screen bg-gradient-to-b from-zinc-50 via-white to-zinc-100 text-zinc-900">
       <div className="mx-auto max-w-6xl px-6">
         <nav className="sticky top-0 z-20 flex items-center justify-between border-b border-white/70 bg-white/80 py-4 backdrop-blur">
           <div className="flex items-center gap-3">
