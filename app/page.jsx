@@ -1,346 +1,307 @@
 "use client";
 
+import { ArrowRight, Check, Globe, Lock, Zap, Users, BarChart3, Shield } from "lucide-react";
+
 export default function Home() {
-  const steps = [
-    {
-      title: "Set your poll",
-      description:
-        "Create a poll with a clear question and options in seconds. Keep it simple and focused.",
-    },
-    {
-      title: "Share instantly",
-      description:
-        "Send your poll link to teammates or the community. Works great on mobile and desktop.",
-    },
-    {
-      title: "See results live",
-      description:
-        "Watch votes roll in with clean visuals that make decisions obvious and fast.",
-    },
-  ];
-
-  const features = [
-    {
-      title: "Real-time clarity",
-      description:
-        "See percentages update as votes come in so everyone stays aligned and informed.",
-    },
-    {
-      title: "Share-ready links",
-      description:
-        "Instantly share a secure link to invite your team, clients, or community to weigh in.",
-    },
-    {
-      title: "Designed for speed",
-      description:
-        "Zero clutter, crisp typography, and spacing that make every choice obvious on any device.",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-50 via-white to-zinc-100 text-zinc-900">
-      <div className="mx-auto max-w-6xl px-6">
-        <nav className="sticky top-0 z-20 flex items-center justify-between border-b border-white/70 bg-white/80 py-4 backdrop-blur">
+    <div className="min-h-screen bg-gradient-to-b from-white via-indigo-50/30 to-white text-zinc-900">
+      {/* Sticky Navigation */}
+      <nav className="sticky top-0 z-50 mx-auto max-w-6xl px-6 py-4">
+        <div className="flex items-center justify-between rounded-2xl border border-white/70 bg-white/80 px-6 py-3 shadow-lg shadow-indigo-100/40 backdrop-blur-md">
           <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-zinc-900 text-lg font-semibold text-white">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-indigo-700 text-lg font-bold text-white">
               V
-            </span>
-            <div className="leading-tight">
-              <p className="text-base font-semibold text-zinc-900">Vote</p>
-              <p className="text-xs text-zinc-500">Decide together, quickly.</p>
+            </div>
+            <div className="leading-tight hidden sm:block">
+              <p className="text-base font-semibold text-zinc-900">Votely</p>
+              <p className="text-xs text-zinc-600">Smart voting, clear decisions</p>
             </div>
           </div>
-          <div className="hidden items-center gap-6 text-sm font-medium text-zinc-600 sm:flex">
-            <a className="transition-colors hover:text-zinc-900" href="#hero">
-              Overview
-            </a>
-            <a
-              className="transition-colors hover:text-zinc-900"
-              href="#preview"
-            >
-              Preview
-            </a>
-            <a
-              className="transition-colors hover:text-zinc-900"
-              href="#features"
-            >
-              Features
-            </a>
-            <a className="transition-colors hover:text-zinc-900" href="#steps">
-              How it works
-            </a>
+          <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-700">
+            <a href="#features" className="hover:text-indigo-600 transition">Features</a>
+            <a href="#pricing" className="hover:text-indigo-600 transition">Pricing</a>
+            <a href="#faq" className="hover:text-indigo-600 transition">FAQ</a>
           </div>
-          <button
-            type="button"
-            className="inline-flex items-center justify-center gap-3 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-black/10 transition-transform transition-shadow duration-200 hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10">
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                className="h-4 w-4 fill-white"
-              >
-                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.07-.73.08-.72.08-.72 1.19.08 1.82 1.22 1.82 1.22 1.05 1.81 2.75 1.29 3.42.99.11-.77.41-1.29.74-1.59-2.55-.29-5.23-1.28-5.23-5.71 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.5.11-3.12 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.96.13 2.88.39 2.21-1.49 3.18-1.18 3.18-1.18.63 1.62.23 2.82.11 3.12.75.81 1.2 1.84 1.2 3.1 0 4.44-2.68 5.41-5.24 5.7.42.36.79 1.07.79 2.16 0 1.56-.02 2.82-.02 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
-              </svg>
-            </span>
-            <span>Sign in with GitHub</span>
+          <button className="rounded-full bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-200 hover:shadow-xl hover:-translate-y-0.5 transition">
+            Get Started
           </button>
-        </nav>
-      </div>
+        </div>
+      </nav>
 
-      <main className="mx-auto flex max-w-6xl flex-col gap-20 px-6 pb-20 pt-12 sm:pt-16 lg:pt-20">
-        <header
-          id="hero"
-          className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center"
-        >
+      <main className="mx-auto max-w-6xl px-6 py-16 sm:py-24">
+        {/* Hero Section */}
+        <section className="grid gap-12 lg:grid-cols-2 lg:items-center mb-32">
           <div className="space-y-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
-              Vote application
-            </p>
             <div className="space-y-4">
-              <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-                Make decisions fast with effortless voting.
-              </h1>
-              <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl">
-                A minimal, modern voting experience built for teams who value
-                clarity. Set up a poll, share, and collect results without
-                friction.
-              </p>
-            </div>
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <button
-                type="button"
-                className="inline-flex items-center justify-center gap-3 rounded-full bg-black px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/10 transition-transform transition-shadow duration-200 hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10">
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5 fill-white"
-                  >
-                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.07-.73.08-.72.08-.72 1.19.08 1.82 1.22 1.82 1.22 1.05 1.81 2.75 1.29 3.42.99.11-.77.41-1.29.74-1.59-2.55-.29-5.23-1.28-5.23-5.71 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.5.11-3.12 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.96.13 2.88.39 2.21-1.49 3.18-1.18 3.18-1.18.63 1.62.23 2.82.11 3.12.75.81 1.2 1.84 1.2 3.1 0 4.44-2.68 5.41-5.24 5.7.42.36.79 1.07.79 2.16 0 1.56-.02 2.82-.02 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
-                  </svg>
-                </span>
-                <span className="text-base">Sign in with GitHub</span>
-              </button>
-              <p className="text-sm text-zinc-500">
-                UI only — wire up your auth later.
-              </p>
-            </div>
-            <div className="grid gap-4 text-sm text-zinc-600 sm:grid-cols-2 sm:text-base">
-              <div className="rounded-2xl border border-white/60 bg-white/80 p-4 shadow-sm shadow-zinc-200 backdrop-blur">
-                <p className="font-semibold text-zinc-900">Focused by design</p>
-                <p className="mt-1 leading-relaxed">
-                  A single place to gather opinions without clutter or
-                  distractions.
-                </p>
+              <div className="inline-block">
+                <span className="rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-semibold text-indigo-700 border border-indigo-100">✨ Fast decisions, verified results</span>
               </div>
-              <div className="rounded-2xl border border-white/60 bg-white/80 p-4 shadow-sm shadow-zinc-200 backdrop-blur">
-                <p className="font-semibold text-zinc-900">Built for clarity</p>
-                <p className="mt-1 leading-relaxed">
-                  Readable typography, sensible spacing, and a layout that
-                  scales on any screen.
-                </p>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
+                Voting That
+                <span className="block bg-gradient-to-r from-indigo-600 to-indigo-500 bg-clip-text text-transparent">
+                  Actually Works
+                </span>
+              </h1>
+              <p className="text-lg sm:text-xl text-zinc-600 leading-relaxed max-w-xl">
+                Create secure polls, gather instant feedback, and make decisions together. No complexity, no friction—just clear results everyone can trust.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="rounded-full bg-indigo-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-indigo-200 hover:shadow-xl hover:-translate-y-0.5 transition flex items-center justify-center gap-2">
+                Start Voting Free
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button className="rounded-full bg-white px-8 py-4 text-base font-semibold text-indigo-600 border-2 border-indigo-600 hover:bg-indigo-50 transition">
+                Watch Demo
+              </button>
+            </div>
+
+            <div className="flex items-center gap-6 text-sm text-zinc-600">
+              <div className="flex items-center gap-2">
+                <Lock className="w-4 h-4 text-indigo-600" />
+                <span>End-to-end encrypted</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Zap className="w-4 h-4 text-indigo-600" />
+                <span>Instant results</span>
               </div>
             </div>
           </div>
-          <div
-            id="preview"
-            className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/90 p-8 shadow-2xl shadow-zinc-300/40 backdrop-blur lg:p-10"
-          >
-            <div
-              className="absolute inset-0 bg-gradient-to-br from-zinc-50 via-white to-zinc-100"
-              aria-hidden="true"
-            />
-            <div className="relative space-y-6">
-              <p className="text-sm font-medium uppercase tracking-[0.24em] text-zinc-500">
-                Preview
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between rounded-2xl border border-zinc-100 bg-white px-4 py-3 shadow-sm">
-                  <p className="text-sm font-medium text-zinc-800">
-                    What should we build next?
-                  </p>
-                  <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">
+
+          {/* Hero Mockup */}
+          <div className="relative">
+            <div className="absolute -top-20 -right-20 w-80 h-80 bg-indigo-200/30 rounded-full blur-3xl -z-10"></div>
+            <div className="relative rounded-3xl border border-white/70 bg-white/90 shadow-2xl shadow-indigo-200/50 backdrop-blur-xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-white" />
+              <div className="relative p-6 sm:p-8 space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-semibold text-zinc-800">Company Meeting Poll</span>
+                  <span className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold">
+                    <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse" />
                     Live
                   </span>
                 </div>
-                <div className="space-y-2 rounded-2xl border border-zinc-100 bg-white px-4 py-4 shadow-sm">
-                  <div className="flex items-center justify-between rounded-xl bg-zinc-50 px-3 py-3">
-                    <span className="text-sm font-medium text-zinc-800">
-                      Feature A
-                    </span>
-                    <span className="text-sm font-semibold text-emerald-600">
-                      42%
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between rounded-xl bg-zinc-50 px-3 py-3">
-                    <span className="text-sm font-medium text-zinc-800">
-                      Feature B
-                    </span>
-                    <span className="text-sm font-semibold text-indigo-600">
-                      33%
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between rounded-xl bg-zinc-50 px-3 py-3">
-                    <span className="text-sm font-medium text-zinc-800">
-                      Feature C
-                    </span>
-                    <span className="text-sm font-semibold text-amber-600">
-                      25%
-                    </span>
-                  </div>
+                <p className="text-sm font-semibold text-zinc-700">When should we have our next team lunch?</p>
+                <div className="space-y-3">
+                  {[
+                    { label: "This Friday", votes: 48 },
+                    { label: "Next Monday", votes: 32 },
+                    { label: "Following Week", votes: 20 }
+                  ].map((option) => (
+                    <div key={option.label} className="space-y-2">
+                      <div className="flex justify-between text-xs font-semibold text-zinc-700">
+                        <span>{option.label}</span>
+                        <span>{option.votes}%</span>
+                      </div>
+                      <div className="w-full h-2 bg-zinc-100 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-gradient-to-r from-indigo-600 to-indigo-500 rounded-full"
+                          style={{ width: `${option.votes}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-zinc-100 bg-white px-4 py-3 shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-zinc-500">
-                    Share
-                  </p>
-                  <p className="mt-1 text-sm text-zinc-800">
-                    Copy a link and invite your team in one click.
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-zinc-100 bg-white px-4 py-3 shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-zinc-500">
-                    Transparent
-                  </p>
-                  <p className="mt-1 text-sm text-zinc-800">
-                    Everyone sees the same real-time results.
-                  </p>
+                <div className="grid grid-cols-2 gap-3 pt-2">
+                  <div className="rounded-lg bg-indigo-50 border border-indigo-100 p-3">
+                    <p className="text-xs text-zinc-600 font-medium">Total Votes</p>
+                    <p className="text-lg font-bold text-indigo-600 mt-1">342</p>
+                  </div>
+                  <div className="rounded-lg bg-indigo-50 border border-indigo-100 p-3">
+                    <p className="text-xs text-zinc-600 font-medium">Participation</p>
+                    <p className="text-lg font-bold text-indigo-600 mt-1">89%</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </header>
+        </section>
 
-        <section id="features" className="space-y-6">
-          <div className="space-y-2">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
-              Features
-            </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
-              A calm space for clear votes
-            </h2>
-            <p className="max-w-3xl text-base leading-relaxed text-zinc-600 sm:text-lg">
-              Everything you need to publish a poll that feels intentional,
-              polished, and ready for every device.
-            </p>
+        {/* Stats Bar */}
+        <div className="grid grid-cols-3 gap-6 mb-32 py-12 border-y border-indigo-100/50">
+          <div className="text-center">
+            <p className="text-3xl sm:text-4xl font-bold text-indigo-600">50k+</p>
+            <p className="text-sm text-zinc-600 mt-2">Polls Created</p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="rounded-2xl border border-zinc-200 bg-white/90 p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-900 text-sm font-semibold text-white shadow-sm shadow-zinc-900/10">
-                  {feature.title.slice(0, 1)}
+          <div className="text-center">
+            <p className="text-3xl sm:text-4xl font-bold text-indigo-600">2M+</p>
+            <p className="text-sm text-zinc-600 mt-2">Total Votes</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl sm:text-4xl font-bold text-indigo-600">99.9%</p>
+            <p className="text-sm text-zinc-600 mt-2">Uptime SLA</p>
+          </div>
+        </div>
+
+        {/* Features Section */}
+        <section id="features" className="mb-32">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4 border border-indigo-100">Features</span>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Everything you need</h2>
+            <p className="text-lg text-zinc-600 max-w-2xl mx-auto">Powerful features designed to make voting simple, secure, and trustworthy for everyone.</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { icon: Zap, title: "Real-time Results", description: "See votes come in live with beautiful charts and instant updates" },
+              { icon: Shield, title: "Fully Secure", description: "End-to-end encryption keeps every vote safe and anonymous" },
+              { icon: Users, title: "Easy to Share", description: "One-click sharing makes it simple to invite participants" },
+              { icon: BarChart3, title: "Smart Analytics", description: "Detailed insights help you understand voting patterns" },
+              { icon: Globe, title: "Works Anywhere", description: "Mobile-optimized interface works on all devices" },
+              { icon: Lock, title: "Verified", description: "Blockchain-backed verification for complete transparency" }
+            ].map((feature, idx) => {
+              const Icon = feature.icon;
+              return (
+                <div key={idx} className="rounded-2xl border border-indigo-100/50 bg-white/70 p-8 hover:shadow-lg hover:-translate-y-1 transition">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 to-indigo-500 flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-zinc-900">{feature.title}</h3>
+                  <p className="text-zinc-600 leading-relaxed">{feature.description}</p>
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-zinc-900">
-                  {feature.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-600">
-                  {feature.description}
-                </p>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section className="mb-32">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4 border border-indigo-100">How It Works</span>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Three simple steps</h2>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-8">
+            {[
+              { num: "1", title: "Create", desc: "Write your question and add options in seconds" },
+              { num: "2", title: "Share", desc: "Invite people via link, email, or QR code" },
+              { num: "3", title: "Decide", desc: "Get instant results and export for records" }
+            ].map((step, idx) => (
+              <div key={idx} className="relative">
+                <div className="rounded-2xl border border-indigo-100/50 bg-gradient-to-br from-indigo-50 to-white p-8 text-center">
+                  <div className="w-16 h-16 rounded-full bg-indigo-600 text-white flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-indigo-200">
+                    {step.num}
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-zinc-900">{step.title}</h3>
+                  <p className="text-zinc-600">{step.desc}</p>
+                </div>
+                {idx < 2 && <div className="hidden sm:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-indigo-300"><ArrowRight className="w-8 h-8" /></div>}
               </div>
             ))}
           </div>
         </section>
 
-        <section id="steps" className="space-y-6">
-          <div className="space-y-2">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
-              How it works
-            </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
-              Simple steps to launch a poll
-            </h2>
-            <p className="max-w-3xl text-base leading-relaxed text-zinc-600 sm:text-lg">
-              From idea to decision in minutes. The flow stays lightweight so
-              everyone can participate without friction.
-            </p>
+        {/* Pricing */}
+        <section id="pricing" className="mb-32">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4 border border-indigo-100">Pricing</span>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Simple, transparent pricing</h2>
+            <p className="text-lg text-zinc-600">Start free, scale as you grow.</p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {steps.map((step) => (
-              <div
-                key={step.title}
-                className="group rounded-2xl border border-zinc-200 bg-white/90 p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-900 text-sm font-semibold text-white shadow-sm shadow-zinc-900/10">
-                  {step.title.slice(0, 1)}
+
+          <div className="grid sm:grid-cols-3 gap-8">
+            {[
+              { name: "Starter", price: "Free", features: ["Up to 100 voters", "Unlimited polls", "Basic analytics", "Email support"] },
+              { name: "Pro", price: "$29", period: "/month", features: ["Up to 5,000 voters", "Advanced analytics", "Custom branding", "Priority support"], popular: true },
+              { name: "Enterprise", price: "Custom", features: ["Unlimited voters", "Custom features", "Dedicated support", "SLA guarantee"] }
+            ].map((plan, idx) => (
+              <div key={idx} className={`rounded-2xl p-8 transition ${plan.popular ? 'border-2 border-indigo-600 bg-gradient-to-br from-indigo-50 to-white shadow-xl shadow-indigo-200/50' : 'border border-indigo-100/50 bg-white/70'}`}>
+                {plan.popular && <span className="inline-block bg-indigo-600 text-white px-4 py-1 rounded-full text-xs font-bold mb-4">Most Popular</span>}
+                <h3 className="text-2xl font-bold mb-2 text-zinc-900">{plan.name}</h3>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold text-indigo-600">{plan.price}</span>
+                  {plan.period && <span className="text-zinc-600">{plan.period}</span>}
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-zinc-900">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-600">
-                  {step.description}
-                </p>
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, fidx) => (
+                    <li key={fidx} className="flex items-center gap-3 text-zinc-700">
+                      <Check className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <button className={`w-full rounded-lg py-3 font-semibold transition ${plan.popular ? 'bg-indigo-600 text-white hover:shadow-lg hover:-translate-y-0.5' : 'bg-white text-indigo-600 border-2 border-indigo-600 hover:bg-indigo-50'}`}>
+                  Get Started
+                </button>
               </div>
             ))}
           </div>
         </section>
 
-        <section
-          id="cta"
-          className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/90 px-8 py-10 shadow-xl shadow-zinc-300/40 backdrop-blur sm:px-10"
-        >
-          <div
-            className="absolute inset-0 bg-gradient-to-r from-zinc-50 via-white to-zinc-100"
-            aria-hidden="true"
-          />
-          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
-                Ready to publish?
-              </p>
-              <h3 className="text-2xl font-semibold text-zinc-900 sm:text-3xl">
-                Launch your next poll in under a minute.
-              </h3>
-              <p className="max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg">
-                Keep your team moving with a focused experience that makes every
-                vote clear, fair, and fast.
-              </p>
-            </div>
-            <button
-              type="button"
-              className="inline-flex items-center justify-center gap-3 self-start rounded-full bg-black px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/10 transition-transform transition-shadow duration-200 hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10">
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  className="h-5 w-5 fill-white"
-                >
-                  <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.07-.73.08-.72.08-.72 1.19.08 1.82 1.22 1.82 1.22 1.05 1.81 2.75 1.29 3.42.99.11-.77.41-1.29.74-1.59-2.55-.29-5.23-1.28-5.23-5.71 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.5.11-3.12 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.96.13 2.88.39 2.21-1.49 3.18-1.18 3.18-1.18.63 1.62.23 2.82.11 3.12.75.81 1.2 1.84 1.2 3.1 0 4.44-2.68 5.41-5.24 5.7.42.36.79 1.07.79 2.16 0 1.56-.02 2.82-.02 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
-                </svg>
-              </span>
-              <span className="text-base">Sign in with GitHub</span>
-            </button>
+        {/* FAQ */}
+        <section id="faq" className="mb-32">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4 border border-indigo-100">FAQ</span>
+            <h2 className="text-4xl sm:text-5xl font-bold">Common questions</h2>
           </div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {[
+              { q: "Is my vote anonymous?", a: "Yes, your identity is kept separate from your vote. Only the results are public." },
+              { q: "Can I close a poll early?", a: "Absolutely. You can end a poll anytime and still share results with participants." },
+              { q: "What devices are supported?", a: "Votely works on all modern browsers and devices—desktop, tablet, and mobile." },
+              { q: "How do I export results?", a: "Download results as CSV, PDF, or share via link. All formats include full voting data." }
+            ].map((item, idx) => (
+              <details key={idx} className="group rounded-lg border border-indigo-100/50 bg-white/70 p-6 hover:shadow-md transition">
+                <summary className="flex cursor-pointer items-center justify-between font-semibold text-zinc-900">
+                  <span>{item.q}</span>
+                  <span className="text-indigo-600 group-open:rotate-45 transition">+</span>
+                </summary>
+                <p className="mt-4 text-zinc-600 leading-relaxed">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA Footer */}
+        <section className="rounded-3xl border border-indigo-200 bg-gradient-to-br from-indigo-600 to-indigo-700 px-8 sm:px-12 py-16 text-center text-white">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Ready to make better decisions?</h2>
+          <p className="text-lg text-indigo-100 mb-8 max-w-2xl mx-auto">Join thousands of teams using Votely for faster, transparent decision-making.</p>
+          <button className="rounded-full bg-white text-indigo-600 px-8 py-4 text-base font-semibold hover:shadow-xl hover:-translate-y-0.5 transition flex items-center justify-center gap-2 mx-auto">
+            Start Your Free Poll Today
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </section>
       </main>
 
-      <footer className="border-t border-white/70 bg-white/80 py-8 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-base font-semibold text-zinc-900">Vote</p>
-            <p className="text-sm text-zinc-500">
-              A minimal voting experience for fast decisions.
-            </p>
+      {/* Footer */}
+      <footer className="border-t border-indigo-100/50 bg-white/80 backdrop-blur mt-20 py-12">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid sm:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-lg font-bold">V</div>
+                <span className="font-bold text-zinc-900">Votely</span>
+              </div>
+              <p className="text-sm text-zinc-600">Smart voting for better decisions.</p>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-zinc-900 mb-4">Product</p>
+              <ul className="space-y-2 text-sm text-zinc-600">
+                <li><a href="#features" className="hover:text-indigo-600">Features</a></li>
+                <li><a href="#pricing" className="hover:text-indigo-600">Pricing</a></li>
+                <li><a href="#" className="hover:text-indigo-600">Security</a></li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-zinc-900 mb-4">Company</p>
+              <ul className="space-y-2 text-sm text-zinc-600">
+                <li><a href="#" className="hover:text-indigo-600">Blog</a></li>
+                <li><a href="#" className="hover:text-indigo-600">Careers</a></li>
+                <li><a href="#" className="hover:text-indigo-600">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-zinc-900 mb-4">Legal</p>
+              <ul className="space-y-2 text-sm text-zinc-600">
+                <li><a href="#" className="hover:text-indigo-600">Privacy</a></li>
+                <li><a href="#" className="hover:text-indigo-600">Terms</a></li>
+              </ul>
+            </div>
           </div>
-          <div className="flex items-center gap-5 text-sm text-zinc-600">
-            <a
-              className="transition-colors hover:text-zinc-900"
-              href="#features"
-            >
-              Features
-            </a>
-            <a className="transition-colors hover:text-zinc-900" href="#steps">
-              How it works
-            </a>
-            <a className="transition-colors hover:text-zinc-900" href="#cta">
-              Get started
-            </a>
+          <div className="border-t border-indigo-100/50 pt-8 text-center text-sm text-zinc-600">
+            <p>&copy; 2025 Votely. All rights reserved.</p>
           </div>
         </div>
       </footer>
