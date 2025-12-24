@@ -20,121 +20,6 @@ export default function Home() {
       <HeroSection />
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 w-full overflow-x-hidden pt-20">
-        <section className="grid gap-16 lg:grid-cols-2 lg:items-center py-24 sm:py-32">
-          <div className="space-y-8">
-            <div className="space-y-5">
-              <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 dark:bg-blue-900/30 px-3.5 py-1.5 text-xs font-semibold text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/50">
-                <Sparkles className="w-3.5 h-3.5" />
-                Smart voting platform
-              </div>
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-tight text-zinc-900 dark:text-zinc-100">
-                Make Better
-                <span className="block text-transparent bg-clip-text bg-linear-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-blue-300 dark:via-cyan-300 dark:to-cyan-200">
-                  Decisions
-                </span>
-              </h1>
-              <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-lg">
-                Real-time polls with instant results. Create, share, and decide
-                together with complete transparency and security.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3">
-              <button className="rounded-lg bg-blue-600 dark:bg-blue-600 px-8 py-3.5 text-base font-semibold text-white hover:bg-blue-700 dark:hover:bg-blue-500 transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
-                Start Creating Polls
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <button className="rounded-lg bg-zinc-100 dark:bg-zinc-700 px-8 py-3.5 text-base font-semibold text-zinc-900 dark:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-600 transition">
-                View Demo
-              </button>
-            </div>
-
-            <div className="flex items-center gap-8 text-sm text-zinc-600 dark:text-zinc-300 border-t border-zinc-200 dark:border-zinc-700 pt-8">
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/40">
-                  <Lock className="w-4 h-4 text-blue-600 dark:text-blue-300" />
-                </div>
-                <span>256-bit encrypted</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/40">
-                  <Zap className="w-4 h-4 text-blue-600 dark:text-blue-300" />
-                </div>
-                <span>Instant results</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl -z-10"></div>
-            <div className="relative rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-2xl overflow-hidden">
-              <div className="p-6 sm:p-8 space-y-5">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                    <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
-                      Team Meeting Poll
-                    </span>
-                  </div>
-                  <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-700 px-2.5 py-1 rounded-full">
-                    5 mins ago
-                  </span>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-100">
-                    Best time for weekly standup?
-                  </p>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                    342 responses
-                  </p>
-                </div>
-                <div className="space-y-4">
-                  {[
-                    { label: "9:00 AM", votes: 58 },
-                    { label: "10:30 AM", votes: 28 },
-                    { label: "2:00 PM", votes: 14 },
-                  ].map((option) => (
-                    <div key={option.label} className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                          {option.label}
-                        </span>
-                        <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                          {option.votes}%
-                        </span>
-                      </div>
-                      <div className="w-full h-2.5 bg-zinc-100 dark:bg-zinc-700 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-linear-to-r from-blue-600 to-blue-500 dark:from-blue-500 dark:to-blue-400 rounded-full"
-                          style={{ width: `${option.votes}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="grid grid-cols-2 gap-3 pt-3 border-t border-zinc-200 dark:border-zinc-700">
-                  <div className="rounded-lg bg-zinc-50 dark:bg-zinc-700 p-3">
-                    <p className="text-xs text-zinc-600 dark:text-zinc-300 font-medium">
-                      Participation
-                    </p>
-                    <p className="text-lg font-bold text-blue-600 dark:text-blue-300 mt-1">
-                      94%
-                    </p>
-                  </div>
-                  <div className="rounded-lg bg-zinc-50 dark:bg-zinc-700 p-3">
-                    <p className="text-xs text-zinc-600 dark:text-zinc-300 font-medium">
-                      Status
-                    </p>
-                    <p className="text-lg font-bold text-green-600 dark:text-green-400 mt-1">
-                      Live
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <div className="grid grid-cols-3 gap-8 py-16 border-t border-b border-zinc-200 dark:border-zinc-700">
           <div className="text-center">
             <p className="text-4xl sm:text-5xl font-bold text-blue-600 dark:text-blue-400">
@@ -461,7 +346,7 @@ export default function Home() {
         </section>
       </main>
 
-   <Footer/>
+      <Footer />
     </div>
   );
 }
