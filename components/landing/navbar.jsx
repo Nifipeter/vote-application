@@ -1,7 +1,8 @@
 "use client";
 import { signIn } from "next-auth/react";
 import Toggle from "../toggle";
-import { BsGoogle } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
+
 export default function Navbar() {
   return (
     <nav className="fixed top-4 left-4 right-4 z-50 ">
@@ -49,7 +50,7 @@ export default function Navbar() {
             }}
             className="rounded-lg cursor-pointer bg-zinc-900 dark:bg-white dark:text-black  px-5 py-2.5 text-sm font-semibold text-white hover:bg-zinc-800 dark:hover:bg-zinc-600 transition shadow-md hover:shadow-lg shrink-0 flex items-center gap-2"
           >
-            <BsGoogle />
+            <FcGoogle size={18} />
             <span className="hidden md:block">Sign in</span>
           </button>
         </div>
