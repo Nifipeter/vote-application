@@ -35,12 +35,17 @@ const pollsModels = new Schema(
       type: {
         emailPrefix: {
           type: String,
+          default: "",
         },
         departmentCodes: {
           type: [String],
           lowercase: true,
+          default: [],
         },
       },
+    },
+    voters: {
+      type: [Schema.Types.ObjectId],
     },
   },
   {
