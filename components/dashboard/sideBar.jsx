@@ -17,19 +17,19 @@ export default function SideBar({ sidebarOpen, sidebarCollapsed }) {
       icon: FileText,
       label: "My Polls",
       active: pathname.includes("mypolls"),
-      href: "/dashboard/mypolls",
+      href: "/mypolls",
     },
     {
       icon: PlusCircle,
       label: "Create Poll",
       active: pathname.includes("createpoll"),
-      href: "/dashboard/createpoll",
+      href: "/createpoll",
     },
     {
       icon: BarChart3,
       label: "Results",
       active: pathname.includes("results"),
-      href: "/dashboard/results",
+      href: "/results",
     },
   ];
   return (
