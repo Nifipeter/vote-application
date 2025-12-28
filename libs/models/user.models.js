@@ -14,22 +14,6 @@ const userSchema = new Schema(
     image: {
       type: String,
     },
-    voteInfo: {
-      type: [
-        {
-          voteId: {
-            type: Schema.Types.ObjectId,
-            default: null,
-          },
-          role: {
-            type: String,
-            enum: ["voter", "admin", "contestant"],
-            default: "voter",
-          },
-        },
-      ],
-      default: [],
-    },
     googleId: {
       type: String,
       required: true,
