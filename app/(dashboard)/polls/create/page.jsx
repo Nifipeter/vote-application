@@ -79,20 +79,20 @@ export default function CreatePollPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-800 dark:text-slate-200 mb-3">
-                    Start Date <span className="text-red-500">*</span>
+                    Start Date & Time <span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="date"
+                    type="datetime-local"
                     className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700/50 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent transition-all"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-800 dark:text-slate-200 mb-3">
-                    End Date <span className="text-red-500">*</span>
+                    End Date & Time <span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="date"
+                    type="datetime-local"
                     className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700/50 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent transition-all"
                   />
                 </div>
