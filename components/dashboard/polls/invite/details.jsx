@@ -1,3 +1,5 @@
+"use client";
+
 export default function InvitationDetails({ pollData }) {
   return (
     <div className="px-8 sm:px-12 py-10">

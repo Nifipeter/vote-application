@@ -1,65 +1,25 @@
-"use client";
-
 import InvitationDetails from "@/components/dashboard/polls/invite/details";
 import InvitationFooter from "@/components/dashboard/polls/invite/footer";
 import InvitationHeader from "@/components/dashboard/polls/invite/header";
-import { Calendar, User, CheckCircle, ArrowRight, Clock } from "lucide-react";
+import InvitationError from "@/components/dashboard/polls/invite/error";
+import { cookies } from "next/headers";
 
-export default function InvitationPage({ params }) {
-  // Sample poll data
-  const pollData = {
-    id: 1,
-    title: "Election for Company Leadership Team",
-    description:
-      "Vote for your preferred candidates for the upcoming company leadership positions. Each vote is important and will help shape our organization's future direction.",
-    createdBy: {
-      name: "HR Department",
-      email: "hr@company.com",
-      avatar: "HR",
-    },
-    startDate: "2025-01-15T10:00:00",
-    endDate: "2025-01-22T18:00:00",
-    status: "Active",
-    position: "Chief Technology Officer",
-    candidates: [
-      {
-        id: 1,
-        name: "Michael Chen",
-        role: "Senior Engineering Manager",
-        email: "michael.chen@company.com",
-        department: "Engineering",
-        experience: "12 years in tech leadership",
-        bio: "Passionate about building scalable systems and mentoring teams.",
+export default async function Page({ params }) {
+  const { invitationId } = await params;
+  const request = await fetch(
+    `http://localhost:3000/api/polls/${invitationId}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: (await cookies()).toString(),
       },
-      {
-        id: 2,
-        name: "Alexandra Rodriguez",
-        role: "Director of Product",
-        email: "alex.rodriguez@company.com",
-        department: "Product",
-        experience: "10 years in product development",
-        bio: "Focused on user-centric innovation and market strategy.",
-      },
-      {
-        id: 3,
-        name: "James Williams",
-        role: "VP of Engineering",
-        email: "james.williams@company.com",
-        department: "Engineering",
-        experience: "15 years in enterprise software",
-        bio: "Expert in cloud architecture and team management.",
-      },
-    ],
-    totalVoters: 50,
-    votedCount: 24,
-    // Voting rules from polls model
-    rules: {
-      emailPrefix: "@company.com",
-      departmentCodes: ["eng", "product", "sales", "marketing"],
-    },
-  };
-
-
+    }
+  );
+  const response = await request.json();
+  if (!request.ok || response?.error) {
+    return <InvitationError errorType="not_found" />;
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900 transition-colors">
