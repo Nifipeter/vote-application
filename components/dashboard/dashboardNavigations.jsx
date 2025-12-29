@@ -62,7 +62,7 @@ export default function DashboardNavigations({ children, session }) {
               </button>
 
               <div
-                className="flex max-w-[180px] items-center gap-3 rounded-lg border border-gray-200 dark:border-gray-600 py-1.5 pl-1.5 pr-2 hover:bg-gray-50 dark:hover:bg-gray-700"
+                className="flex max-w-45 items-center gap-3 rounded-lg border border-gray-200 dark:border-gray-600 py-1.5 pl-1.5 pr-2 hover:bg-gray-50 dark:hover:bg-gray-700"
                 title={`${session?.user?.name} • ${session?.user?.email}`}
               >
                 {session?.user?.image ? (
@@ -72,7 +72,7 @@ export default function DashboardNavigations({ children, session }) {
                     alt={session?.user?.name || "User Avatar"}
                   />
                 ) : (
-                  <div className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-indigo-500 to-cyan-500 text-xs font-semibold text-white">
+                  <div className="grid h-8 w-8 place-items-center rounded-full bg-linear-to-br from-indigo-500 to-cyan-500 text-xs font-semibold text-white">
                     {(session?.user?.name?.[0] ?? "G").toUpperCase()}
                   </div>
                 )}

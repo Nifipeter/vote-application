@@ -30,12 +30,12 @@ export default function InvitationError({ errorType = "not_found" }) {
   const Icon = config.icon;
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900 transition-colors flex items-center justify-center px-4 py-8">
+    <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900 transition-colors flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-md">
         {/* Error Card */}
         <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl dark:shadow-2xl overflow-hidden border border-gray-100 dark:border-slate-700">
           {/* Top Gradient Bar */}
-          <div className="h-2 bg-gradient-to-r from-red-600 via-red-500 to-orange-600"></div>
+          <div className="h-2 bg-linear-to-r from-red-600 via-red-500 to-orange-600"></div>
 
           {/* Content */}
           <div className="p-8 sm:p-12 text-center">
@@ -91,7 +91,7 @@ export default function InvitationError({ errorType = "not_found" }) {
             <div className="space-y-3">
               <Link
                 href="/dashboard/polls"
-                className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-700 dark:to-blue-800 dark:hover:from-blue-800 dark:hover:to-blue-900 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2"
+                className="w-full px-6 py-3 bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-700 dark:to-blue-800 dark:hover:from-blue-800 dark:hover:to-blue-900 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2"
               >
                 <Home className="h-5 w-5" />
                 Go to Polls

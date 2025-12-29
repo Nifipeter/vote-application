@@ -5,7 +5,7 @@ export default function CreatePollPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 transition-colors">
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 border-b border-gray-200 dark:border-slate-700 px-6 py-12 sm:py-16 transition-colors">
+      <div className="bg-linear-to-r from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 border-b border-gray-200 dark:border-slate-700 px-6 py-12 sm:py-16 transition-colors">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-4 mb-6">
             <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 dark:bg-blue-700 text-white">

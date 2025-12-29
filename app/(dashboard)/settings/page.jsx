@@ -4,7 +4,7 @@ import { BadgeCheck, Bell, Lock, Mail, Phone, UserRound } from "lucide-react";
 
 export default function SettingsPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-black px-4 py-8 text-slate-100 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-linear-to-b from-slate-900 via-slate-950 to-black px-4 py-8 text-slate-100 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-5xl flex-col gap-6">
         <header className="rounded-3xl border border-white/10 bg-white/5 px-5 py-4 shadow-xl shadow-black/40 sm:px-6 sm:py-5">
           <p className="text-xs uppercase tracking-[0.16em] text-slate-400">
@@ -39,10 +39,10 @@ export default function SettingsPage() {
                 </button>
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-3">
-                <div className="grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-indigo-500 to-cyan-500 text-lg font-semibold text-white">
+                <div className="grid h-16 w-16 place-items-center rounded-full bg-linear-to-br from-indigo-500 to-cyan-500 text-lg font-semibold text-white">
                   JD
                 </div>
-                <div className="flex-1 min-w-[180px]">
+                <div className="flex-1 min-w-45">
                   <p className="text-sm text-slate-400">Display name</p>
                   <p className="text-base font-semibold text-white">
                     Jordan Doe

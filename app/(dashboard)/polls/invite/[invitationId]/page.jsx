@@ -22,11 +22,11 @@ export default async function Page({ params }) {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900 transition-colors">
+    <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900 transition-colors">
       <div className="flex items-center justify-center min-h-screen px-4 py-8">
         <div className="w-full max-w-2xl">
           <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl dark:shadow-2xl overflow-hidden border border-gray-100 dark:border-slate-700">
-            <div className="h-2 bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600"></div>
+            <div className="h-2 bg-linear-to-r from-blue-600 via-blue-500 to-purple-600"></div>
 
             {/* Header Content */}
             <InvitationHeader pollData={response?.poll} />
