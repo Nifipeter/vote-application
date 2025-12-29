@@ -27,18 +27,13 @@ export default async function Page({ params }) {
         <div className="w-full max-w-2xl">
           <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl dark:shadow-2xl overflow-hidden border border-gray-100 dark:border-slate-700">
             <div className="h-2 bg-linear-to-r from-blue-600 via-blue-500 to-purple-600"></div>
-
-            {/* Header Content */}
             <InvitationHeader pollData={response?.poll} />
 
-            {/* Invitation Details */}
             <InvitationDetails pollData={response?.poll} />
 
-            {/* Footer */}
             <InvitationFooter pollData={response?.poll} />
           </div>
 
-          {/* Floating Info Box */}
           <div className="mt-8 bg-white dark:bg-slate-800 rounded-xl shadow-lg dark:shadow-xl p-6 border border-gray-100 dark:border-slate-700 max-w-md mx-auto">
             <h3 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
               <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-bold">
