@@ -18,6 +18,7 @@ export async function PUT(req, { params }) {
         }
       );
     }
+    // check if the user already exist in the poll
     return NextResponse.json(
       { message: "Successfully updated poll", userId, pollsId },
       {
