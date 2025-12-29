@@ -26,7 +26,7 @@ export const GET = auth(async function GET(req) {
       );
     }
     return NextResponse.json(
-      { message: "GET user information" },
+      { user },
       {
         status: 200,
       }

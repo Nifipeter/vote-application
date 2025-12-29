@@ -26,9 +26,11 @@ const userSchema = new Schema(
     },
     department: {
       type: String,
+      default: null,
     },
     faculty: {
       type: String,
+      default: null,
     },
     voteInformation: {
       type: {

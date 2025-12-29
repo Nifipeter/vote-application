@@ -23,7 +23,7 @@ export default function SideBar({ sidebarOpen, sidebarCollapsed }) {
       icon: PlusCircle,
       label: "Create Poll",
       active: pathname.includes("createpoll"),
-      href: "/createpoll",
+      href: "/polls/create",
     },
     {
       icon: BarChart3,
