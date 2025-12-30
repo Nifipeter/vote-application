@@ -1,5 +1,15 @@
 import { ArrowRight, Clock, Users } from "lucide-react";
 export default function PollsCard({ poll }) {
+  const {
+    title,
+    description,
+    status,
+    startDate,
+    endDate,
+    voters,
+    completedVoters,
+    userId,
+  } = poll;
   return (
     <div
       key={poll._id}
@@ -31,7 +41,7 @@ export default function PollsCard({ poll }) {
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400">
           <Users className="h-4 w-4" />
-          <span>{poll.participants} voting</span>
+          <span>{poll?.voters?.length} voting</span>
         </div>
         <p className="text-xs text-gray-500 dark:text-slate-500">
           By {poll.creatorName}

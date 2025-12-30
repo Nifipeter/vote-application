@@ -99,9 +99,9 @@ export default async function Page() {
 
         {!!list.length && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {list.map((poll) => (
-              return <PollsCard poll={poll} key={poll._id}/>
-            ))}
+            {list.map((poll) => {
+              return <PollsCard key={poll._id} poll={poll} />;
+            })}
           </div>
         )}
       </div>
