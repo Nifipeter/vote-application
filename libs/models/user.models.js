@@ -33,17 +33,19 @@ const userSchema = new Schema(
       default: null,
     },
     voteInformation: {
-      type: {
-        pollId: {
-          type: Schema.Types.ObjectId,
-          ref: "Polls",
+      type: [
+        {
+          pollId: {
+            type: Schema.Types.ObjectId,
+            ref: "Polls",
+          },
+          role: {
+            type: String,
+            enum: ["Voters", "Candidate", " Admin", "Owner"],
+            default: "Voters",
+          },
         },
-        role: {
-          type: String,
-          enum: ["Voters", "Candidate", " Admin", "Owner"],
-          default: "Voters",
-        },
-      },
+      ],
     },
   },
   {

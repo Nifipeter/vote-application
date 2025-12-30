@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { connectDatabase } from "@/libs/connectdatabase";
+import User from "@/libs/models/user.models";
 
 export async function PUT(req, { params }) {
   const { userId: authorizationUserId } = await req.json();
@@ -31,6 +33,37 @@ export async function PUT(req, { params }) {
     );
   }
   try {
+    await connectDatabase();
+    // check if the user even exist
+    const user = await User.findById(userId);
+    // if user does not exist
+    if (!user) {
+      return NextResponse.json(
+        { error: "User does not exist" },
+        {
+          status: 400,
+        }
+      );
+    }
+    // check if user adding him exist
+    const authorizationUser = await User.findById(authorizationUserId);
+    if (!authorizationUser) {
+      return NextResponse.json(
+        { error: "Invalid Parameters" },
+        {
+          status: 400,
+        }
+      );
+    }
+    // check if the user has access to the poll
+      const authorizationUserVoteInfo = authorizationUser.voteInformation
+      // return successfully added user
+    return NextResponse.json(
+      { message: "Add a new user", authorizationUserVoteInfo },
+      {
+        status: 200,
+      }
+    );
   } catch (err) {
     console.log(err);
     return NextResponse.json(
