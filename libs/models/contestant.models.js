@@ -1,13 +1,13 @@
 import { Schema, model, models } from "mongoose";
 
-const contestantModels = new Schema(
+const ContestantSchema = new Schema(
   {
     pollId: {
       type: Schema.Types.ObjectId,
       ref: "Polls",
       required: true,
     },
-    userId: {
+    createdBy: {
       type: Schema.Types.ObjectId,
       ref: "Users",
       required: true,
@@ -16,23 +16,31 @@ const contestantModels = new Schema(
       type: String,
       required: true,
     },
-    candidate: {
-      type: [Schema.Types.ObjectId],
-      ref: "Candidates",
-      default: [],
-    },
-    voter: {
-      type: [Schema.Types.ObjectId],
-      ref: "Voter",
-      default: [],
-    },
+    candidates: [
+      {
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: "Users",
+          required: true,
+        },
+        votes: {
+          type: Number,
+          default: 0,
+        },
+      },
+    ],
+    voters: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Users",
+      },
+    ],
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
-contestantModels.index({ pollId: 1, position: 1 }, { unique: true });
+// unique poll + position
+ContestantSchema.index({ pollId: 1, position: 1 }, { unique: true });
 
-const Contestant = models.Contestant || model("Contestant", contestantModels);
+const Contestant = models.Contestant || model("Contestant", ContestantSchema);
 export default Contestant;

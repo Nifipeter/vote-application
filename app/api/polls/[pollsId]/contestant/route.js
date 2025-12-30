@@ -125,7 +125,7 @@ export async function POST(req, { params }) {
     //after verifying all process then create a contestant
     const contestant = await Contestant.create({
       pollId: pollsId,
-      userId: userId,
+      createdBy: userId,
       position: position.toLowerCase(),
     });
     // success message
