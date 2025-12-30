@@ -208,7 +208,12 @@ export const GET = auth(async function GET(req) {
     // get all polls from the database
     const polls = await Polls.find({
       voters: { $in: [userId] },
-    }).sort({ createdAt: -1 });
+    })
+      .select(
+        "title description status startDate endDate voters completedVoters userId"
+      )
+      .sort({ createdAt: -1 })
+      .populate("userId", "name");
     return NextResponse.json(
       { message: "Polls fetched successfully", polls: polls },
       { status: 200 }
