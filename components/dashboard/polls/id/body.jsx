@@ -4,6 +4,7 @@ import { useState } from "react";
 import PollsIdBodyTabs from "./tabs";
 import OverviewTab from "./overview-tab";
 import CandidatesTab from "./candidates-tab";
+import VoteTab from "./vote-tab";
 import VotersTab from "./voters-tab";
 import SettingsTab from "./settings-tab";
 import PositionsTab from "./positions-tab";
@@ -17,6 +18,7 @@ export default function PollsIdBody({ pollData }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {activeTab === "overview" && <OverviewTab pollData={pollData} />}
         {activeTab === "candidates" && <CandidatesTab pollData={pollData} />}
+        {activeTab === "vote" && <VoteTab pollData={pollData} />}
         {activeTab === "positions" && <PositionsTab pollData={pollData} />}
         {activeTab === "voters" && <VotersTab pollData={pollData} />}
         {activeTab === "settings" && <SettingsTab pollData={pollData} />}

@@ -1,8 +1,16 @@
-import { TrendingUp, Users, UserPlus, Settings, Award } from "lucide-react";
+import {
+  TrendingUp,
+  Users,
+  UserPlus,
+  Settings,
+  Award,
+  CheckCircle,
+} from "lucide-react";
 export default function PollsIdBodyTabs({ activeTab, setActiveTab }) {
   const tabs = [
     { id: "overview", name: "Overview", icon: TrendingUp },
     { id: "candidates", name: "Candidates", icon: Users },
+    { id: "vote", name: "Vote", icon: CheckCircle },
     { id: "positions", name: "Positions", icon: Award },
     { id: "voters", name: "Voters", icon: UserPlus },
     { id: "settings", name: "Settings", icon: Settings },
