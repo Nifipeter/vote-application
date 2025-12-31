@@ -60,18 +60,18 @@ const getVotingStatus = (startDate, endDate) => {
 
 const getMedalColor = (position) => {
   if (position === 0)
-    return "bg-gradient-to-br from-amber-400 to-amber-600 text-white";
+    return "bg-linear-to-br from-amber-400 to-amber-600 text-white";
   if (position === 1)
-    return "bg-gradient-to-br from-slate-300 to-slate-400 text-gray-800";
+    return "bg-linear-to-br from-slate-300 to-slate-400 text-gray-800";
   if (position === 2)
-    return "bg-gradient-to-br from-orange-400 to-orange-500 text-white";
+    return "bg-linear-to-br from-orange-400 to-orange-500 text-white";
   return "bg-gray-200 dark:bg-slate-600 text-gray-700 dark:text-slate-300";
 };
 
 const getProgressGradient = (position) => {
-  if (position === 0) return "bg-gradient-to-r from-emerald-500 to-emerald-600";
-  if (position === 1) return "bg-gradient-to-r from-blue-500 to-blue-600";
-  return "bg-gradient-to-r from-purple-500 to-purple-600";
+  if (position === 0) return "bg-linear-to-r from-emerald-500 to-emerald-600";
+  if (position === 1) return "bg-linear-to-r from-blue-500 to-blue-600";
+  return "bg-linear-to-r from-purple-500 to-purple-600";
 };
 
 export default function OverviewTab({ pollData }) {
@@ -214,7 +214,7 @@ export default function OverviewTab({ pollData }) {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex items-center gap-4">
-            <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg">
+            <div className="h-12 w-12 rounded-xl bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg">
               <CheckCircle className="h-6 w-6 text-white" />
             </div>
             <div className="flex-1">
@@ -227,7 +227,7 @@ export default function OverviewTab({ pollData }) {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg">
+            <div className="h-12 w-12 rounded-xl bg-linear-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg">
               <AlertCircle className="h-6 w-6 text-white" />
             </div>
             <div className="flex-1">
@@ -246,7 +246,7 @@ export default function OverviewTab({ pollData }) {
       {(pollData.rules.emailPrefix ||
         pollData.rules.departmentCodes.length > 0) && (
         <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 shadow-sm overflow-hidden">
-          <div className="bg-gradient-to-r from-gray-50 to-gray-50 dark:from-slate-700/50 dark:to-slate-700/30 px-6 py-5 border-b border-gray-200 dark:border-slate-700">
+          <div className="bg-linear-to-r from-gray-50 to-gray-50 dark:from-slate-700/50 dark:to-slate-700/30 px-6 py-5 border-b border-gray-200 dark:border-slate-700">
             <h2 className="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
               <Award className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
               Voting Eligibility Requirements
@@ -266,7 +266,7 @@ export default function OverviewTab({ pollData }) {
                     <p className="text-sm text-gray-600 dark:text-slate-400 mb-3">
                       Voting restricted to specific email domain:
                     </p>
-                    <div className="inline-block px-4 py-2.5 bg-gradient-to-r from-blue-50 to-blue-50 dark:from-blue-900/20 dark:to-blue-900/20 border border-blue-200 dark:border-blue-700/50 rounded-lg">
+                    <div className="inline-block px-4 py-2.5 bg-linear-to-r from-blue-50 to-blue-50 dark:from-blue-900/20 dark:to-blue-900/20 border border-blue-200 dark:border-blue-700/50 rounded-lg">
                       <code className="text-sm font-mono font-semibold text-blue-700 dark:text-blue-300">
                         @{pollData.rules.emailPrefix}
                       </code>
@@ -318,10 +318,10 @@ export default function OverviewTab({ pollData }) {
               className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 shadow-sm overflow-hidden"
             >
               {/* Position Header */}
-              <div className="bg-gradient-to-r from-gray-50 to-gray-50 dark:from-slate-700/50 dark:to-slate-700/30 px-6 py-5 border-b border-gray-200 dark:border-slate-700">
+              <div className="bg-linear-to-r from-gray-50 to-gray-50 dark:from-slate-700/50 dark:to-slate-700/30 px-6 py-5 border-b border-gray-200 dark:border-slate-700">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center">
+                    <div className="h-10 w-10 rounded-lg bg-linear-to-br from-indigo-500 to-indigo-600 flex items-center justify-center">
                       <Award className="h-5 w-5 text-white" />
                     </div>
                     {position}
@@ -351,7 +351,7 @@ export default function OverviewTab({ pollData }) {
                     {candidates.map((candidate, index) => (
                       <div
                         key={candidate.id}
-                        className="group relative bg-gradient-to-br from-white to-gray-50 dark:from-slate-700 dark:to-slate-800 rounded-xl border-2 border-gray-200 dark:border-slate-600 p-5 hover:shadow-xl hover:scale-105 transition-all duration-300"
+                        className="group relative bg-linear-to-br from-white to-gray-50 dark:from-slate-700 dark:to-slate-800 rounded-xl border-2 border-gray-200 dark:border-slate-600 p-5 hover:shadow-xl hover:scale-105 transition-all duration-300"
                       >
                         {/* Rank Badge */}
                         <div className="absolute -top-3 -left-3">
