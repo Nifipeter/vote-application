@@ -18,6 +18,7 @@ const ContestantSchema = new Schema(
     },
     description: {
       type: String,
+      required: true,
     },
     candidates: [
       {

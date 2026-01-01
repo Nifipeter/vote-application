@@ -50,13 +50,13 @@ const pollsModels = new Schema(
     },
     contestants: {
       type: [Schema.Types.ObjectId],
-      ref: "Candidates",
+      ref: "Contestant",
       default: [],
     },
     completedVoters: {
       type: [Schema.Types.ObjectId],
       default: [],
-      ref: "Contestant",
+      ref: "User",
     },
     role: {
       type: [

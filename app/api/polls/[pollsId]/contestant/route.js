@@ -48,7 +48,7 @@ export async function GET(req, { params }) {
 }
 
 export async function POST(req, { params }) {
-  const { userId, position } = await req.json();
+  const { userId, position, description } = await req.json();
   const { pollsId } = await params;
   // check if the user id exist
   if (!userId) {
@@ -68,7 +68,6 @@ export async function POST(req, { params }) {
       }
     );
   }
-
   // check the position
   if (!position || !position.trim()) {
     return NextResponse.json(
@@ -87,6 +86,25 @@ export async function POST(req, { params }) {
       }
     );
   }
+  // check for the position description
+  if (!description || !description.trim()) {
+    return NextResponse.json(
+      { error: "Description is missing" },
+      {
+        status: 400,
+      }
+    );
+  }
+
+  // check if it's less than 10 character
+  if (description.trim().length < 10) {
+    return NextResponse.json(
+      { error: "Description is less than 10 characters" },
+      {
+        status: 400,
+      }
+    );
+  }
 
   try {
     await connectDatabase();
@@ -95,6 +113,16 @@ export async function POST(req, { params }) {
     if (!user) {
       return NextResponse.json(
         { error: "User does not exist" },
+        {
+          status: 400,
+        }
+      );
+    }
+    // check if the poll exist
+    const poll = await Polls.findById(pollsId);
+    if (!poll) {
+      return NextResponse.json(
+        { error: "Poll does not exist" },
         {
           status: 400,
         }
@@ -127,7 +155,11 @@ export async function POST(req, { params }) {
       pollId: pollsId,
       createdBy: userId,
       position: position.toLowerCase(),
+      description: description,
     });
+
+    poll.contestants.push(contestant._id);
+    await poll.save();
     // success message
     return NextResponse.json(
       { message: "Successfully Created.", contestant: contestant },
