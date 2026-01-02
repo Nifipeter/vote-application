@@ -6,7 +6,7 @@ import {
   Award,
   CheckCircle,
 } from "lucide-react";
-export default function PollsIdBodyTabs({ activeTab, setActiveTab }) {
+export default function PollsIdBodyTabs({ activeTab, onTabChange }) {
   const tabs = [
     { id: "overview", name: "Overview", icon: TrendingUp },
     { id: "candidates", name: "Candidates", icon: Users },
@@ -24,7 +24,7 @@ export default function PollsIdBodyTabs({ activeTab, setActiveTab }) {
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => onTabChange(tab.id)}
                 className={`px-4 py-3 cursor-pointer font-semibold text-sm whitespace-nowrap border-b-2 transition-colors flex items-center gap-2 ${
                   activeTab === tab.id
                     ? "border-blue-600 text-blue-600 dark:border-blue-500 dark:text-blue-500"

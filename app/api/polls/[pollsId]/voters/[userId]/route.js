@@ -23,7 +23,12 @@ export async function DELETE(req, { params }) {
   }
   // if authorizingUser is not defined
   if (!authorizingUser) {
-      
+    return NextResponse.json(
+      { error: "Unauthorized Access" },
+      {
+        status: 401,
+      }
+    );
   }
   return NextResponse.json(
     { message: "REMOVE user from voters" },
