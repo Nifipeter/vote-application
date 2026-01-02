@@ -45,7 +45,7 @@ export default function VoteTab({ pollData }) {
         {positions.map((position) => (
           <Link
             key={position.id}
-            href={`./vote/${position.id}`}
+            href={`/polls/1/vote/${position.id}`}
             className="group"
           >
             <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 overflow-hidden h-full">

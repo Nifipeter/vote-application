@@ -1,12 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
+import LoadingSpinner from "@/components/loadingspinner";
 import { Plus, Edit, Trash2, Mail, Building } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function CandidatesTab({ pollData, poll, pollId }) {
   const [candidates, setCandidate] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     async function fetchCandidates() {
+      setLoading(true);
       try {
         const request = await fetch(
           `/api/polls/${pollId}/contestant/candidate`,
@@ -20,18 +23,23 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
         );
         const response = await request.json();
         if (!request.ok || response?.error) {
+          setLoading(false);
           toast.error(response?.error || "An error occurred");
           return setCandidate([]);
         }
         setCandidate(response?.candidate);
+        setLoading(false);
       } catch (err) {
         console.log(err);
         toast.error("Network Error");
+        setLoading(false);
         return setCandidate([]);
       }
     }
     fetchCandidates();
   }, [pollId]);
+
+  if (loading) return <LoadingSpinner />;
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
