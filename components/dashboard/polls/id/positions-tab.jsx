@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { Plus, Trash2, Award, Users } from "lucide-react";
 import { toast } from "react-toastify";
+import LoadingSpinner from "@/components/loadingspinner";
 
 export default function PositionsTab({ pollData, pollId }) {
   const [position, setPosition] = useState([]);
-  const [positions, setPositions] = useState(pollData.positions || []);
   const [newPositionName, setNewPositionName] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchPosition() {
+      setLoading(true);
       try {
         const request = await fetch(`/api/polls/${pollId}/contestant/`, {
           method: "GET",
@@ -20,32 +22,21 @@ export default function PositionsTab({ pollData, pollId }) {
         const response = await request.json();
         if (!request.ok || response?.error) {
           toast.error(response?.error || "An error occurred.");
+          setLoading(false);
           return setPosition([]);
         }
         setPosition(response?.contestant);
+        setLoading(false);
       } catch (err) {
         console.log(err);
+        setLoading(false);
         return toast.error("Network Error");
       }
     }
     fetchPosition();
   }, [pollId]);
 
-  const handleAddPosition = () => {
-    if (newPositionName.trim()) {
-      const position = {
-        id: Date.now(),
-        name: newPositionName,
-        users: [],
-      };
-      setPositions([...positions, position]);
-      setNewPositionName("");
-    }
-  };
-
-  const handleDeletePosition = (id) => {
-    setPositions(positions.filter((p) => p.id !== id));
-  };
+  if (loading) return <LoadingSpinner />;
 
   return (
     <div className="space-y-4 sm:space-y-6 px-4 sm:px-0">
@@ -58,15 +49,10 @@ export default function PositionsTab({ pollData, pollId }) {
             type="text"
             value={newPositionName}
             onChange={(e) => setNewPositionName(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter" && handleAddPosition()}
             placeholder="e.g., President, Vice President..."
             className="flex-1 px-3 sm:px-4 py-3 sm:py-2.5 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <button
-            onClick={handleAddPosition}
-            disabled={!newPositionName.trim()}
-            className="w-full sm:w-auto px-4 sm:px-6 py-3 sm:py-2.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
-          >
+          <button className="w-full sm:w-auto px-4 sm:px-6 py-3 sm:py-2.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2">
             <Plus className="h-5 w-5" />
             <span className="sm:hidden">Add</span>
             <span className="hidden sm:inline">Add Position</span>
@@ -103,7 +89,6 @@ export default function PositionsTab({ pollData, pollId }) {
                   </div>
                 </div>
                 <button
-                  onClick={() => handleDeletePosition(position._id)}
                   className="w-full sm:w-auto px-3 py-2 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-lg transition-colors font-medium text-sm sm:font-normal sm:p-2"
                   title="Delete position"
                 >

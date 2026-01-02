@@ -16,7 +16,7 @@ export default function PollsIdBody({ pollData, poll, pollId }) {
       <PollsIdBodyTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-        {/* {activeTab === "overview" && <OverviewTab pollData={pollData} />} */}
+        {activeTab === "overview" && <OverviewTab pollData={pollData} />}
         {activeTab === "candidates" && (
           <CandidatesTab pollData={pollData} poll={poll} pollId={pollId} />
         )}
