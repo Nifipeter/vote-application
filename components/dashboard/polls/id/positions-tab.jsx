@@ -1,10 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Plus, Trash2, Award, Users } from "lucide-react";
+import { toast } from "react-toastify";
 
 export default function PositionsTab({ pollData, pollId }) {
   const [position, setPosition] = useState([]);
   const [positions, setPositions] = useState(pollData.positions || []);
   const [newPositionName, setNewPositionName] = useState("");
+
+  useEffect(() => {
+    async function fetchPosition() {
+      try {
+        const request = await fetch(`/api/polls/${pollId}/contestant/`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        });
+        const response = await request.json();
+        if (!request.ok || response?.error) {
+          toast.error(response?.error || "An error occurred.");
+          return setPositions([]);
+        }
+        setPositions(response?.contestant);
+      } catch (err) {
+        console.log(err);
+        return toast.error("Network Error");
+      }
+    }
+  }, [pollId]);
 
   const handleAddPosition = () => {
     if (newPositionName.trim()) {
