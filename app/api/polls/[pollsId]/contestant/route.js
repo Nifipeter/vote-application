@@ -3,6 +3,7 @@ import { connectDatabase } from "@/libs/connectdatabase";
 import Polls from "@/libs/models/polls.models";
 import Contestant from "@/libs/models/contestant.models";
 import User from "@/libs/models/user.models";
+import { auth } from "@/auth";
 
 export async function GET(req, { params }) {
   const { pollsId } = await params;
@@ -47,8 +48,17 @@ export async function GET(req, { params }) {
   }
 }
 
-export async function POST(req, { params }) {
-  const { userId, position, description } = await req.json();
+export const POST = auth(async function POST(req, { params }) {
+  if (!req.auth || !req.auth.user) {
+    return NextResponse.json(
+      { error: "Unauthorized Access" },
+      {
+        status: 400,
+      }
+    );
+  }
+  const userId = req?.auth?.user?.id;
+  const { position, description } = await req.json();
   const { pollsId } = await params;
   // check if the user id exist
   if (!userId) {
@@ -184,4 +194,4 @@ export async function POST(req, { params }) {
       }
     );
   }
-}
+});

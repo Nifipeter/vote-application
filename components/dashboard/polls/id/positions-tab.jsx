@@ -55,6 +55,46 @@ export default function PositionsTab({ pollId }) {
 
   if (loading) return <LoadingSpinner />;
 
+  async function handleCreatePosition() {
+    // Validate input title
+    if (!newPositionName.trim()) {
+      return toast.error("Position is required.");
+    }
+    if (newPositionName.trim().length < 5) {
+      return toast.error("Positon cant be less than 5 character");
+    }
+    // validate description
+    if (!newPositionDescription.trim()) {
+      return toast.error("Description is required.");
+    }
+    if (newPositionDescription.trim().length < 10) {
+      return toast.error("Description cant be less than 10 character");
+    }
+    // create it in the backend
+    try {
+      const request = await fetch(`/api/polls/${pollId}/contestant/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          position: newPositionName,
+          description: newPositionDescription,
+        }),
+      });
+      const response = await request.json();
+      if (!request.ok || response?.error) {
+        return toast.error(response?.error || "An error occurred.");
+      }
+      toast.success(response?.message || "Position Successfully created!");
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+      return toast.error("Network Error");
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div className="bg-linear-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-4 sm:p-6 border border-blue-100 dark:border-slate-600">
@@ -69,7 +109,7 @@ export default function PositionsTab({ pollId }) {
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg hover:shadow-xl shrink-0"
+            className="w-full sm:w-auto px-6 py-3 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg hover:shadow-xl shrink-0"
           >
             <Plus className="h-5 w-5" />
             <span>New Position</span>
@@ -79,7 +119,7 @@ export default function PositionsTab({ pollId }) {
 
       {isModalOpen && (
         <div
-          className="fixed inset-0 z-40 backdrop-blur-sm bg-black/30 dark:bg-black/50 transition-opacity h-screen overflow-y-auto"
+          className="fixed inset-0 z-40 cursor-pointer backdrop-blur-sm bg-black/30 dark:bg-black/50 transition-opacity h-screen overflow-y-auto"
           onClick={handleCloseModal}
         />
       )}
@@ -97,7 +137,7 @@ export default function PositionsTab({ pollId }) {
               </h3>
               <button
                 onClick={handleCloseModal}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg transition-colors text-gray-600 dark:text-slate-400"
+                className="p-2 hover:bg-gray-100 cursor-pointer dark:hover:bg-slate-700 rounded-lg transition-colors text-gray-600 dark:text-slate-400"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -120,8 +160,7 @@ export default function PositionsTab({ pollId }) {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 dark:text-slate-300 mb-2">
-                  Description{" "}
-                  <span className="text-gray-500 text-xs">(Optional)</span>
+                  Description <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   value={newPositionDescription}
@@ -137,11 +176,15 @@ export default function PositionsTab({ pollId }) {
             <div className="px-4 sm:px-6 py-4 border-t border-gray-200 dark:border-slate-700 flex gap-3 shrink-0 bg-white dark:bg-slate-800">
               <button
                 onClick={handleCloseModal}
-                className="flex-1 px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-slate-600 rounded-lg font-medium text-sm text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
+                className="flex-1 px-4 py-2.5 sm:py-3 border cursor-pointer border-gray-300 dark:border-slate-600 rounded-lg font-medium text-sm text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
               >
                 Cancel
               </button>
-              <button className="flex-1 px-4 py-2.5 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm rounded-lg transition-colors flex items-center justify-center gap-2">
+              <button
+                type="submit"
+                onClick={handleCreatePosition}
+                className="flex-1 px-4 py-2.5 cursor-pointer sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm rounded-lg transition-colors flex items-center justify-center gap-2"
+              >
                 <Plus className="h-4 w-4" />
                 <span>Create</span>
               </button>
