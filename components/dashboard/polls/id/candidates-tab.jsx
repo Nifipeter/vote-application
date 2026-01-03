@@ -1,12 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
 import LoadingSpinner from "@/components/loadingspinner";
-import { Plus, Users, Mail } from "lucide-react";
+import { Plus, Users, Mail, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function CandidatesTab({ pollData, poll, pollId }) {
+  const voters = poll?.voters || [];
   const [candidates, setCandidate] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState("");
+  const [selectedPosition, setSelectedPosition] = useState("");
+
+  // Static users data (replace with actual data later)
+  const staticUsers = [
+    { _id: "1", name: "John Doe", email: "john@example.com" },
+    { _id: "2", name: "Jane Smith", email: "jane@example.com" },
+    { _id: "3", name: "Mike Johnson", email: "mike@example.com" },
+    { _id: "4", name: "Sarah Williams", email: "sarah@example.com" },
+  ];
+
+  // Get positions from poll
+  const positions = poll?.contestants || [];
   useEffect(() => {
     async function fetchCandidates() {
       setLoading(true);
@@ -53,12 +68,14 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
             registered
           </p>
         </div>
-        <button className="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="w-full sm:w-auto px-6 py-3 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+        >
           <Plus className="h-5 w-5" />
           <span>Add Candidate</span>
         </button>
       </div>
-
       {/* Candidates List or Empty State */}
       {candidates.length === 0 ? (
         <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-12 text-center">
@@ -135,6 +152,99 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
           ))}
         </div>
       )}
+      {/* Add Candidate Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm z-50 flex items-center sm:items-center justify-center p-4 sm:p-0">
+          <div className="bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl w-full sm:w-full sm:max-w-96 max-h-[85vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl">
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700 px-6 py-5 flex items-center justify-between">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                Add New Candidate
+              </h3>
+              <button
+                onClick={() => {
+                  setIsModalOpen(false);
+                  setSelectedUser("");
+                  setSelectedPosition("");
+                }}
+                className="text-gray-500 dark:text-slate-400 hover:text-gray-700 dark:hover:text-slate-300 transition-colors"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="px-6 py-6 space-y-6">
+              {/* User Dropdown */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-3">
+                  Select User
+                </label>
+                <select
+                  value={selectedUser}
+                  onChange={(e) => setSelectedUser(e.target.value)}
+                  className="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+                >
+                  <option value="">Choose a user...</option>
+                  {voters.map((user) => (
+                    <option key={user._id} value={user._id}>
+                      {user.name} ({user.email})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Position Dropdown */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-3">
+                  Select Position
+                </label>
+                <select
+                  value={selectedPosition}
+                  onChange={(e) => setSelectedPosition(e.target.value)}
+                  className="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+                >
+                  <option value="">Choose a position...</option>
+                  {positions.map((position) => (
+                    <option key={position._id} value={position._id}>
+                      {position.position}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* Modal Actions */}
+            <div className="border-t border-gray-200 dark:border-slate-700 px-6 py-4 flex gap-3 flex-col-reverse sm:flex-row">
+              <button
+                onClick={() => {
+                  setIsModalOpen(false);
+                  setSelectedUser("");
+                  setSelectedPosition("");
+                }}
+                className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  if (!selectedUser || !selectedPosition) {
+                    toast.error("Please select both user and position");
+                    return;
+                  }
+                  toast.success("Candidate added successfully!");
+                  setIsModalOpen(false);
+                  setSelectedUser("");
+                  setSelectedPosition("");
+                }}
+                className="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
+              >
+                Add Candidate
+              </button>
+            </div>
+          </div>
+        </div>
+      )}{" "}
     </div>
   );
 }

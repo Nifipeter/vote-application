@@ -29,7 +29,8 @@ export const GET = auth(async function GET(req, { params }) {
     // check if the poll  exist
     const poll = await Polls.findById(pollsId)
       .populate("userId", "name email image")
-      .populate("contestants");
+      .populate("contestants")
+      .populate("voters");
     // if no poll return an error
     if (!poll) {
       return NextResponse.json(
@@ -41,7 +42,7 @@ export const GET = auth(async function GET(req, { params }) {
     }
 
     const userExist = poll?.voters.find(
-      (v) => v.toString() === userId.toString()
+      (v) => v._id.toString() === userId.toString()
     );
 
     if (!userExist) {
