@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { connectDatabase } from "@/libs/connectdatabase";
 import User from "@/libs/models/user.models";
 import Polls from "@/libs/models/polls.models";
+import Contestant from "@/libs/models/contestant.models";
+import mongoose from "mongoose";
 
 export async function DELETE(req, { params }) {
   const { pollsId, userId } = await params;
@@ -104,8 +106,8 @@ export async function DELETE(req, { params }) {
     }
     // if the user role is not admin or owner return unauthorized access
     if (
-      authorizingUserRole?.userRole !== "Admin" ||
-      authorizingUserRole?.userRole === "Owner"
+      authorizingUserRole?.userRole !== "Admin" &&
+      authorizingUserRole?.userRole !== "Owner"
     ) {
       return NextResponse.json(
         { error: "You dont have the right to edit this group settings" },
@@ -114,9 +116,64 @@ export async function DELETE(req, { params }) {
         }
       );
     }
+    // check if the user is a candidate
+    const userIsCandidate = user?.voteInformation?.find(
+      (info) => info?.pollId?.toString() === pollsId.toString()
+    );
+    // get userIsCandidate
+    if (!userIsCandidate) {
+      return NextResponse.json(
+        { error: "Invalid Parameters" },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    if (
+      userIsCandidate?.role === "Owner" ||
+      userIsCandidate?.role === "Admin"
+    ) {
+      return NextResponse.json(
+        {
+          error: "You can remove yourself from the board",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+    // check if the user exist in a contestant
+    const contestant = await Contestant.findOne({
+      pollId: pollsId,
+      "candidates.userId": new mongoose.Types.ObjectId(userId),
+    });
+
+    if (contestant) {
+      await Contestant.findOneAndUpdate(
+        { pollId: pollsId },
+        {
+          $pull: {
+            candidates: { userId: userId },
+          },
+        },
+        { new: true }
+      );
+    }
+    //remove the user from the polls
+    poll.voters = poll.voters.filter((p) => p.toString() !== userId.toString());
+    await poll.save();
+    // remove the poll from the user's voteInformation
+    user.voteInformation = user.voteInformation.filter(
+      (info) => info.pollId.toString() !== pollsId.toString()
+    );
+    await user.save();
     //success
     return NextResponse.json(
-      { message: "Successfully deleted user from poll" },
+      {
+        message: "Successfully deleted user from poll",
+        voter: poll.voters,
+      },
       {
         status: 200,
       }
