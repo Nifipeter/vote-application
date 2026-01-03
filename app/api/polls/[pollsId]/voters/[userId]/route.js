@@ -30,10 +30,12 @@ export async function DELETE(req, { params }) {
       }
     );
   }
-  return NextResponse.json(
-    { message: "REMOVE user from voters" },
-    {
-      status: 200,
-    }
-  );
+  try {
+
+  }catch(err){
+      console.error(err);
+      return NextResponse.json({error:"An error occurred while removing user for the poll"},{
+          status: 400,
+      })
+  }
 }
