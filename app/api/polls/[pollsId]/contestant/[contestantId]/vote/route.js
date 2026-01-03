@@ -108,6 +108,24 @@ export const PUT = auth(async function PUT(req, { params }) {
         }
       );
     }
+    // check if the poll voting time has started
+    if (new Date() < new Date(poll?.startDate)) {
+      return NextResponse.json(
+        { error: "Voting has not started" },
+        {
+          status: 400,
+        }
+      );
+    }
+    // check if voting has ended
+    if (new Date() > new Date(poll?.endDate)) {
+      return NextResponse.json(
+        { error: "Voting has ended" },
+        {
+          status: 400,
+        }
+      );
+    }
     // check if the contestant exist
     const contestant = await Contestant.findById(contestantId);
     if (!contestant) {
