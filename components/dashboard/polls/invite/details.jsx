@@ -1,10 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 export default function InvitationDetails({ pollData }) {
+  const [loading, setLoading] = useState(false);
   async function handleAcceptInvitation() {
+    setLoading(true);
     try {
       const request = await fetch(
         `/api/polls/${pollData._id.toString()}/join`,
@@ -19,12 +22,14 @@ export default function InvitationDetails({ pollData }) {
       const response = await request.json();
       console.log(response);
       if (!request.ok || response?.error) {
+        setLoading(false);
         return toast.error(response?.error || "An error occurred.");
       }
       toast.success(response?.message);
       window.location.href = "/polls";
     } catch (err) {
       console.log(err);
+      setLoading(false);
       return toast.error("Unstable internet connection");
     }
   }
@@ -121,10 +126,14 @@ export default function InvitationDetails({ pollData }) {
       <div className="space-y-3">
         <button
           onClick={handleAcceptInvitation}
+          disabled={loading}
           type="button"
-          className="w-full px-6 py-4 bg-linear-to-r cursor-pointer from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-700 dark:to-blue-800 dark:hover:from-blue-800 dark:hover:to-blue-900 text-white font-bold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl text-lg"
+          className="w-full px-6 py-4 bg-linear-to-r cursor-pointer from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-700 dark:to-blue-800 dark:hover:from-blue-800 dark:hover:to-blue-900 text-white font-bold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
         >
-          Accept & Vote
+          {loading && (
+            <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+          )}
+          {loading ? "Joining..." : "Accept & Vote"}
         </button>
         <button className="w-full px-6 py-3 border-2 border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-all duration-200">
           Decline
