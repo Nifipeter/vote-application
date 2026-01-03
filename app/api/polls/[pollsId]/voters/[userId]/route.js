@@ -31,7 +31,7 @@ export async function DELETE(req, { params }) {
     );
   }
   try {
-
+return NextResponse.json({error:""})
   }catch(err){
       console.error(err);
       return NextResponse.json({error:"An error occurred while removing user for the poll"},{

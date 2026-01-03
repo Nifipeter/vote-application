@@ -57,7 +57,6 @@ export default function PositionsTab({ pollId }) {
 
   return (
     <div className="space-y-6">
-      {/* Header with Create Button */}
       <div className="bg-linear-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-4 sm:p-6 border border-blue-100 dark:border-slate-600">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
@@ -78,7 +77,6 @@ export default function PositionsTab({ pollId }) {
         </div>
       </div>
 
-      {/* Modal Backdrop */}
       {isModalOpen && (
         <div
           className="fixed inset-0 z-40 backdrop-blur-sm bg-black/30 dark:bg-black/50 transition-opacity h-screen overflow-y-auto"
@@ -86,7 +84,6 @@ export default function PositionsTab({ pollId }) {
         />
       )}
 
-      {/* Create Position Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center sm:items-center justify-center z-50 px-0 sm:px-4 py-0 sm:py-0">
           <div
@@ -153,7 +150,6 @@ export default function PositionsTab({ pollId }) {
         </div>
       )}
 
-      {/* Positions List */}
       <div>
         <div className="flex items-center gap-3 mb-6">
           <div className="h-10 w-10 rounded-lg bg-linear-to-br from-indigo-500 to-indigo-600 flex items-center justify-center">
@@ -199,7 +195,6 @@ export default function PositionsTab({ pollId }) {
                   )}
                 </div>
 
-                {/* Stats */}
                 <div className="px-6 py-4 space-y-3 flex-1">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
@@ -225,7 +220,6 @@ export default function PositionsTab({ pollId }) {
                   </div>
                 </div>
 
-                {/* Actions */}
                 <div className="px-6 py-4 border-t border-gray-200 dark:border-slate-700 flex gap-3">
                   <button className="flex-1 px-3 py-2 rounded-lg font-medium text-sm flex items-center justify-center gap-2 text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors border border-gray-300 dark:border-slate-600">
                     <Edit className="h-4 w-4" />
