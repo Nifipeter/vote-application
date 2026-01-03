@@ -1,7 +1,7 @@
 import VoteCandidate from "@/components/dashboard/polls/vote/votecandidate";
 import { ArrowRight, CheckCircle, Clock, Info, User } from "lucide-react";
 
-export default function VotingPage({ contestant: contestantProp }) {
+export default async function VotingPage({ params, contestantProp }) {
   // Static template: pass `contestant` as a prop; hook-free so you can wire fetching/state yourself.
   const contestant = contestantProp || {
     _id: "6956e115248243c2988fa1e1",
