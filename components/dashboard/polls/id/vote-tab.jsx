@@ -1,9 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
 
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
-import Image from "next/image";
 
 export default function VoteTab({ pollData }) {
   const positions = [
