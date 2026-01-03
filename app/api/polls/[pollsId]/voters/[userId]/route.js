@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import { connectDatabase } from "@/libs/connectdatabase";
+import User from "@/libs/models/user.models";
+import Polls from "@/libs/models/polls.models";
 
 export async function DELETE(req, { params }) {
   const { pollsId, userId } = await params;
@@ -31,11 +34,100 @@ export async function DELETE(req, { params }) {
     );
   }
   try {
-return NextResponse.json({error:""})
-  }catch(err){
-      console.error(err);
-      return NextResponse.json({error:"An error occurred while removing user for the poll"},{
+    // connect to database
+    await connectDatabase();
+    // check if the user exist in the database
+    const user = await User.findById(userId);
+    if (!user) {
+      return NextResponse.json(
+        { error: "User does not exist" },
+        {
           status: 400,
-      })
+        }
+      );
+    }
+    // check if the person who want to authorize exist in the database
+    const authorizedUser = await User.findById(authorizingUser);
+    if (!authorizedUser) {
+      return NextResponse.json(
+        { error: "You dont exist" },
+        {
+          status: 400,
+        }
+      );
+    }
+    // check if the poll exist
+    const poll = await Polls.findById(pollsId);
+    if (!poll) {
+      return NextResponse.json(
+        { error: "Poll not found" },
+        {
+          status: 400,
+        }
+      );
+    }
+    // check if the user and authorizingUser exist
+    const userExistInPoll = poll?.voters.find(
+      (voter) => voter.toString() === userId.toString()
+    );
+    if (!userExistInPoll) {
+      return NextResponse.json(
+        { error: "User does not belong to this poll" },
+        {
+          status: 400,
+        }
+      );
+    }
+    // check if the person authorizing exist
+    const authorizingUserExistInPoll = poll?.voters.find(
+      (voter) => voter.toString() === authorizingUser.toString()
+    );
+    if (!authorizingUserExistInPoll) {
+      return NextResponse.json(
+        { error: "Admin does not belong to this poll" },
+        {
+          status: 400,
+        }
+      );
+    }
+    // check if the authorizing user has a role in the poll
+    const authorizingUserRole = poll?.role.find((user) => {
+      return user?.userId.toString() === authorizingUser.toString();
+    });
+    if (!authorizingUserRole) {
+      return NextResponse.json(
+        { error: "User does not have permission to edit this poll" },
+        {
+          status: 400,
+        }
+      );
+    }
+    // if the user role is not admin or owner return unauthorized access
+    if (
+      authorizingUserRole?.userRole !== "Admin" ||
+      authorizingUserRole?.userRole === "Owner"
+    ) {
+      return NextResponse.json(
+        { error: "You dont have the right to edit this group settings" },
+        {
+          status: 400,
+        }
+      );
+    }
+    //success
+    return NextResponse.json(
+      { message: "Successfully deleted user from poll" },
+      {
+        status: 200,
+      }
+    );
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json(
+      { error: "An error occurred while removing user for the poll" },
+      {
+        status: 400,
+      }
+    );
   }
 }
