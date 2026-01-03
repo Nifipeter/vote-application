@@ -11,6 +11,7 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState("");
   const [selectedPosition, setSelectedPosition] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   // Get positions from poll
   const positions = poll?.contestants || [];
@@ -54,6 +55,7 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
     if (!selectedPosition) {
       return toast.error("No position selected!");
     }
+    setSubmitting(true);
     try {
       const request = await fetch(
         `/api/polls/${pollId}/contestant/${selectedPosition}/add/${selectedUser}`,
@@ -67,18 +69,21 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
       );
       const response = await request.json();
       if (!request.ok || response?.error) {
+        setSubmitting(false);
         return toast.error(response?.error || "An error occurred");
       }
       toast.success(response?.message);
       window.location.reload();
     } catch (err) {
       console.log(err);
+      setSubmitting(false);
       return toast.error("Network Error");
+    } finally {
+      setSubmitting(false);
     }
   }
   return (
     <div className="space-y-6">
-      {/* Header with Add Button */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-1">
@@ -97,7 +102,6 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
           <span>Add Candidate</span>
         </button>
       </div>
-      {/* Candidates List or Empty State */}
       {candidates.length === 0 ? (
         <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-12 text-center">
           <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-gray-100 dark:bg-slate-700 mb-4">
@@ -117,7 +121,6 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
               key={candidate._id}
               className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col"
             >
-              {/* Candidate Header */}
               <div className="px-6 py-4 border-b border-gray-200 dark:border-slate-700">
                 <div className="flex items-start gap-4">
                   {candidate?.userId?.image ? (
@@ -146,7 +149,6 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
                 </div>
               </div>
 
-              {/* Candidate Info */}
               <div className="px-6 py-4 space-y-3 flex-1">
                 <div className="flex items-start gap-3">
                   <Mail className="h-4 w-4 text-gray-500 dark:text-slate-400 shrink-0 mt-0.5" />
@@ -176,7 +178,6 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm z-50 flex items-center sm:items-center justify-center p-4 sm:p-0">
           <div className="bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl w-full sm:w-full sm:max-w-96 max-h-[85vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl">
-            {/* Modal Header */}
             <div className="sticky top-0 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700 px-6 py-5 flex items-center justify-between">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                 Add New Candidate
@@ -244,7 +245,6 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
                 </div>
               </div>
 
-              {/* Position Dropdown */}
               <div>
                 <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-3">
                   Select Position
@@ -277,9 +277,13 @@ export default function CandidatesTab({ pollData, poll, pollId }) {
               </button>
               <button
                 onClick={setupCandidate}
-                className="w-full px-4 py-3 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
+                disabled={submitting}
+                className="w-full px-4 py-3 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                Add Candidate
+                {submitting && (
+                  <div className="h-5 w-5 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                )}
+                {submitting ? "Adding..." : "Add Candidate"}
               </button>
             </div>
           </div>

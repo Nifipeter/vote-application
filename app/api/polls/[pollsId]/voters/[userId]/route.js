@@ -158,16 +158,20 @@ export const DELETE = auth(async function DELETE(req, { params }) {
       pollId: pollsId,
       "candidates.userId": new mongoose.Types.ObjectId(userId),
     });
+    console.log(contestant);
 
     if (contestant) {
+      console.log(true);
       await Contestant.findOneAndUpdate(
-        { pollId: pollsId },
+        {
+          pollId: new mongoose.Types.ObjectId(pollsId),
+          "candidates.userId": new mongoose.Types.ObjectId(userId),
+        },
         {
           $pull: {
-            candidates: { userId: userId },
+            candidates: { userId: new mongoose.Types.ObjectId(userId) },
           },
-        },
-        { new: true }
+        }
       );
     }
     //remove the user from the polls
