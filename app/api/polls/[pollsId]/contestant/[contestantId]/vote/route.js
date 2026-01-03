@@ -3,10 +3,20 @@ import { NextResponse } from "next/server";
 import Contestant from "@/libs/models/contestant.models";
 import Polls from "@/libs/models/polls.models";
 import User from "@/libs/models/user.models";
+import { auth } from "@/auth";
 
-export async function PUT(req, { params }) {
+export const PUT = auth(async function PUT(req, { params }) {
+  if (!req.auth || !req.auth.user) {
+    return NextResponse.json(
+      { error: "Unauthorized Access" },
+      {
+        status: 400,
+      }
+    );
+  }
+  const userId = req?.auth?.user?.id;
   const { pollsId, contestantId } = await params;
-  const { userId, candidateUserId } = await req.json();
+  const { candidateUserId } = await req.json();
   // if no userId
   if (!userId) {
     return NextResponse.json(
@@ -177,4 +187,4 @@ export async function PUT(req, { params }) {
       { status: 400 }
     );
   }
-}
+});

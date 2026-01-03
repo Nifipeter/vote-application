@@ -122,7 +122,7 @@ export default async function VotingPage({ params }) {
       </div>
 
       {/* Candidates */}
-      <VoteCandidate candidates={candidates} contestant={contestant} />
+      <VoteCandidate candidates={candidates} contestant={contestant} pollId={pollsId} voteId={voteId}  />
     </main>
   );
 }

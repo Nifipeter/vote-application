@@ -2,10 +2,17 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Loader } from "lucide-react";
+import { toast } from "react-toastify";
 
-export default function VoteCandidate({ candidates, contestant }) {
+export default function VoteCandidate({
+  candidates,
+  contestant,
+  pollId,
+  voteId,
+}) {
   const [selectedCandidate, setSelectedCandidate] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getInitials = (value) => {
     if (!value || typeof value !== "string") return "?";
@@ -25,20 +32,46 @@ export default function VoteCandidate({ candidates, contestant }) {
     return `${value.slice(0, 4)}*****${value.slice(-4)}`;
   };
 
-  const handleSubmit = () => {
-    if (!selectedCandidate) return;
-    console.log("Submit vote for", selectedCandidate);
-  };
+  async function handleSubmit() {
+    if (!selectedCandidate) return toast.error("Please select a candidate");
+    setIsLoading(true);
+    try {
+      const request = await fetch(
+        `/api/polls/${pollId}/contestant/${voteId}/vote`,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            candidateUserId: selectedCandidate,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
+      const response = await request.json();
+      if (!request?.ok || response?.error) {
+        setIsLoading(false);
+        return toast.error(response?.error || "An unexpected error occurred.");
+      }
+      toast.success(response?.message);
+      window.location.href = `/polls/${pollId}`;
+    } catch (err) {
+      console.log(err);
+      setIsLoading(false);
+      return toast.error("Network Error");
+    }
+  }
 
   return (
     <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
       <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
         {candidates.map((candidate) => {
-          const isSelected = selectedCandidate === candidate._id;
+          const isSelected = selectedCandidate === candidate?.userId._id;
           return (
             <article
-              key={candidate._id}
-              onClick={() => setSelectedCandidate(candidate._id)}
+              key={candidate?.userId._id}
+              onClick={() => setSelectedCandidate(candidate?.userId._id)}
               className={`group h-full rounded-2xl border bg-white/90 dark:bg-slate-900/80 backdrop-blur transition-all cursor-pointer shadow-sm hover:shadow-lg ${
                 isSelected
                   ? "border-blue-600 ring-2 ring-blue-100 dark:ring-blue-900/60"
@@ -104,7 +137,7 @@ export default function VoteCandidate({ candidates, contestant }) {
 
                 <button
                   type="button"
-                  onClick={() => setSelectedCandidate(candidate._id)}
+                  onClick={() => setSelectedCandidate(candidate?.userId._id)}
                   className={`mt-auto inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-colors w-full sm:w-auto ${
                     isSelected
                       ? "bg-blue-600 text-white shadow hover:bg-blue-700"
@@ -133,16 +166,25 @@ export default function VoteCandidate({ candidates, contestant }) {
         <button
           type="button"
           onClick={handleSubmit}
-          disabled={!selectedCandidate}
-          className={`px-6 py-3 rounded-xl font-semibold text-sm sm:text-base transition-all duration-200 inline-flex items-center gap-2 ${
-            selectedCandidate
+          disabled={!selectedCandidate || isLoading}
+          className={`px-6 py-3 cursor-pointer rounded-xl font-semibold text-sm sm:text-base transition-all duration-200 inline-flex items-center gap-2 ${
+            selectedCandidate && !isLoading
               ? "bg-blue-600 text-white hover:bg-blue-700 shadow"
               : "bg-gray-200 dark:bg-slate-800 text-gray-500 dark:text-slate-500 cursor-not-allowed"
           }`}
           title={selectedCandidate ? "Submit your vote" : "Select a candidate"}
         >
-          Submit your vote
-          <ArrowRight className="h-4 w-4" />
+          {isLoading ? (
+            <>
+              <Loader className="h-5 w-5 animate-spin" />
+              Submitting...
+            </>
+          ) : (
+            <>
+              Submit your vote
+              <ArrowRight className="h-4 w-4" />
+            </>
+          )}
         </button>
       </div>
     </section>
