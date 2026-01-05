@@ -1,6 +1,33 @@
+"use client";
 import PollsIdHeader from "@/components/dashboard/polls/id/header";
 import PollsIdBody from "@/components/dashboard/polls/id/body";
-export default function PollIdContainer({ poll, pollsId }) {
+import { useState } from "react";
+export default function PollIdContainer({ polls, pollsId }) {
+  const [poll, setPoll] = useState(polls);
+  //     useEffect(() => {
+  //     const streamRequest = new EventSource(
+  //       `/api/boards/${boardId}/assignments/stream`,
+  //       {
+  //         withCredentials: true,
+  //       }
+  //     );
+
+  //     streamRequest.onmessage = (event) => {
+  //       try {
+  //         const parsedData = JSON.parse(event.data);
+  //         setAssignment(parsedData.assignments);
+  //       } catch (err) {
+  //         toast.error("Abnormal Network. Please refresh the page.");
+  //       }
+  //     };
+  //     streamRequest.onerror = () => {
+  //       toast.error("Connection lost. Please refresh the page.");
+  //       streamRequest.close();
+  //     };
+  //     return () => {
+  //       streamRequest.close();
+  //     };
+  //   }, [pollsId]);
   return (
     <>
       <PollsIdHeader pollData={poll} />
