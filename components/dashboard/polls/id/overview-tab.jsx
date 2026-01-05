@@ -1,79 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import {
-  Mail,
-  Building,
-  Calendar,
-  Clock,
-  TrendingUp,
-  Award,
-  Crown,
-  Users,
-  BarChart3,
-  CheckCircle,
-  Zap,
-  AlertCircle,
-} from "lucide-react";
-
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-};
-
-const formatDateShort = (dateString) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-};
-
-const calculateDuration = (startDate, endDate) => {
-  const start = new Date(startDate);
-  const end = new Date(endDate);
-  const diffTime = Math.abs(end - start);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-  if (diffDays < 1) {
-    const diffHours = Math.ceil(diffTime / (1000 * 60 * 60));
-    return `${diffHours} hour${diffHours > 1 ? "s" : ""}`;
-  }
-  return `${diffDays} day${diffDays > 1 ? "s" : ""}`;
-};
-
-const getVotingStatus = (startDate, endDate) => {
-  const now = new Date();
-  const start = new Date(startDate);
-  const end = new Date(endDate);
-
-  if (now < start)
-    return { status: "upcoming", label: "Not Started", color: "amber" };
-  if (now > end) return { status: "closed", label: "Closed", color: "red" };
-  return { status: "active", label: "Active", color: "emerald" };
-};
-
-const getMedalColor = (position) => {
-  if (position === 0)
-    return "bg-linear-to-br from-amber-400 to-amber-600 text-white";
-  if (position === 1)
-    return "bg-linear-to-br from-slate-300 to-slate-400 text-gray-800";
-  if (position === 2)
-    return "bg-linear-to-br from-orange-400 to-orange-500 text-white";
-  return "bg-gray-200 dark:bg-slate-600 text-gray-700 dark:text-slate-300";
-};
-
-const getProgressGradient = (position) => {
-  if (position === 0) return "bg-linear-to-r from-emerald-500 to-emerald-600";
-  if (position === 1) return "bg-linear-to-r from-blue-500 to-blue-600";
-  return "bg-linear-to-r from-purple-500 to-purple-600";
-};
+import { Award, Crown, Users } from "lucide-react";
 
 export default function OverviewTab({ poll }) {
   const userMap = (poll?.voters || []).reduce((acc, user) => {
@@ -100,38 +26,9 @@ export default function OverviewTab({ poll }) {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-6 shadow-sm">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-          <Clock className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-          Voting Timeline
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="relative bg-linear-to-br from-blue-50 to-blue-100/50 dark:from-blue-900/20 dark:to-blue-900/10 rounded-xl p-5 border border-blue-200 dark:border-blue-800/30">
-            <div className="absolute top-0 left-0 w-1 h-full bg-blue-600 rounded-l-xl"></div>
-            <p className="text-xs font-semibold text-blue-700 dark:text-blue-400 uppercase tracking-wide mb-2">
-              Start Date
-            </p>
-            <p className="text-xl font-bold text-gray-900 dark:text-white">
-              {formatDateShort(poll.startDate)}
-            </p>
-            <p className="text-xs text-gray-600 dark:text-slate-400 mt-3">
-              Voting begins
-            </p>
-          </div>
-          <div className="relative bg-linear-to-br from-red-50 to-red-100/50 dark:from-red-900/20 dark:to-red-900/10 rounded-xl p-5 border border-red-200 dark:border-red-800/30">
-            <div className="absolute top-0 left-0 w-1 h-full bg-red-600 rounded-l-xl"></div>
-            <p className="text-xs font-semibold text-red-700 dark:text-red-400 uppercase tracking-wide mb-2">
-              End Date
-            </p>
-            <p className="text-xl font-bold text-gray-900 dark:text-white">
-              {formatDateShort(poll.endDate)}
-            </p>
-            <p className="text-xs text-gray-600 dark:text-slate-400 mt-3">
-              Voting closes
-            </p>
-          </div>
-        </div>
-      </div>
+      <h2 className="text-2xl text-center font-bold text-gray-900 dark:text-white">
+        Poll Overview
+      </h2>
 
       <div className="space-y-6">
         {positionsData.length === 0 ? (
