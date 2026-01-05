@@ -74,16 +74,6 @@ export default function OverviewTab({ poll }) {
                         {position.description}
                       </p>
                     </div>
-                    {/* <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
-                      <div className="flex items-center gap-1.5 sm:gap-2 bg-indigo-100 dark:bg-indigo-900/30 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg flex-1 sm:flex-initial min-w-0">
-                        <span className="text-[10px] sm:text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide whitespace-nowrap">
-                          Candidates
-                        </span>
-                        <span className="font-bold text-indigo-900 dark:text-indigo-100 text-base sm:text-lg">
-                          {position.candidates.length}
-                        </span>
-                      </div>
-                    </div> */}
                   </div>
                 </div>
 
@@ -135,9 +125,7 @@ export default function OverviewTab({ poll }) {
                                     {candidate.email}
                                   </span>
                                 </div>
-                                <div className="flex gap-2 flex-wrap">
-                                  {/* IDs removed per request */}
-                                </div>
+                                <div className="flex gap-2 flex-wrap"></div>
                                 {(candidate.department ||
                                   candidate.faculty) && (
                                   <div className="flex gap-2 flex-wrap text-[11px] font-semibold">

@@ -1,5 +1,4 @@
-import PollsIdHeader from "@/components/dashboard/polls/id/header";
-import PollsIdBody from "@/components/dashboard/polls/id/body";
+import PollIdContainer from "@/components/dashboard/polls/id/pollContainer";
 import { BASE_URL } from "@/libs/config/configuration";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -19,8 +18,7 @@ export default async function PollDetailsPage({ params }) {
 
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 transition-colors">
-      <PollsIdHeader pollData={poll} />
-      <PollsIdBody poll={poll} pollId={pollsId} />
+      <PollIdContainer poll={poll} pollsId={pollsId} />
     </main>
   );
 }
