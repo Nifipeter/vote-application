@@ -6,14 +6,34 @@ import {
   Award,
   CheckCircle,
 } from "lucide-react";
-export default function PollsIdBodyTabs({ activeTab, onTabChange }) {
+export default function PollsIdBodyTabs({ activeTab, onTabChange, user }) {
   const tabs = [
-    { id: "overview", name: "Overview", icon: TrendingUp },
-    { id: "candidates", name: "Candidates", icon: Users },
-    { id: "vote", name: "Vote", icon: CheckCircle },
-    { id: "positions", name: "Positions", icon: Award },
-    { id: "voters", name: "Voters", icon: UserPlus },
-    { id: "settings", name: "Settings", icon: Settings },
+    {
+      id: "overview",
+      name: "Overview",
+      icon: TrendingUp,
+      active: true,
+    },
+    {
+      id: "candidates",
+      name: "Candidates",
+      icon: Users,
+      active: user?.poll?.role === "Owner" || user?.poll?.role === "Admin",
+    },
+    { id: "vote", name: "Vote", icon: CheckCircle, active: true },
+    {
+      id: "positions",
+      name: "Positions",
+      icon: Award,
+      active: user?.poll?.role === "Owner" || user?.poll?.role === "Admin",
+    },
+    {
+      id: "voters",
+      name: "Voters",
+      icon: UserPlus,
+      active: user?.poll?.role === "Owner" || user?.poll?.role === "Admin",
+    },
+    { id: "settings", name: "Settings", icon: Settings, active: true },
   ];
   return (
     <div className="border-b border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900">
@@ -21,6 +41,7 @@ export default function PollsIdBodyTabs({ activeTab, onTabChange }) {
         <div className="flex gap-1 overflow-x-auto scrollbar-hide -mx-4 sm:mx-0 px-4 sm:px-0">
           {tabs.map((tab) => {
             const Icon = tab.icon;
+            if (!tab.active) return null;
             return (
               <button
                 key={tab.id}
