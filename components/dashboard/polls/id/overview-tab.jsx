@@ -72,7 +72,7 @@ export default function OverviewTab({ poll }) {
                         {position.description}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+                    {/* <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
                       <div className="flex items-center gap-1.5 sm:gap-2 bg-indigo-100 dark:bg-indigo-900/30 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg flex-1 sm:flex-initial min-w-0">
                         <span className="text-[10px] sm:text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide whitespace-nowrap">
                           Candidates
@@ -81,7 +81,7 @@ export default function OverviewTab({ poll }) {
                           {position.candidates.length}
                         </span>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
@@ -99,7 +99,7 @@ export default function OverviewTab({ poll }) {
                   ) : (
                     <>
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {topThree.map((candidate, index) => (
+                        {topThree.map((candidate, idx) => (
                           <div
                             key={candidate._id}
                             className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 shadow-xs"
@@ -120,11 +120,6 @@ export default function OverviewTab({ poll }) {
                                 <span className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white truncate">
                                   {candidate.name}
                                 </span>
-                                {index === 0 && (
-                                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-200 font-semibold">
-                                    Top
-                                  </span>
-                                )}
                               </div>
                               <p className="text-xs text-gray-500 dark:text-slate-400">
                                 Votes: {candidate.votes}
