@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 // "use client";
 
+import { BASE_URL } from "@/libs/config/configuration";
 import {
   BadgeCheck,
   Bell,
@@ -11,6 +12,7 @@ import {
   ShieldCheck,
   UserRound,
 } from "lucide-react";
+import { cookies } from "next/headers";
 
 const formatDate = (dateString) => {
   if (!dateString) return "Not set";
@@ -43,7 +45,14 @@ const toInitials = (name) => {
     .join("");
 };
 
-export default function SettingsPage({ user }) {
+export default async function Page() {
+  const request = await fetch(`${BASE_URL}/api/user`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: (await cookies()).toString(),
+    },
+  });
   const fallbackUser = {
     _id: "69541172141b7f27d67277d6",
     name: "areo ayomide",
