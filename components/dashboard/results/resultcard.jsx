@@ -8,12 +8,12 @@ export default function ResultCard({ poll }) {
       <div className="flex items-center gap-2 mb-3">
         <span
           className={`text-xs font-semibold px-2 py-1 rounded-full ${
-            poll.status === "Active"
+            new Date() < new Date(poll?.endDate)
               ? "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300"
               : "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300"
           }`}
         >
-          {poll.status}
+          {new Date() < new Date(poll?.endDate) ? "Active" : "Ended"}
         </span>
       </div>
 
