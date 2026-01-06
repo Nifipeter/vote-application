@@ -29,7 +29,7 @@ export default function PollsCard({ poll }) {
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
         {title}
       </h3>
-      <p className="text-gray-600 dark:text-slate-400 text-sm mb-4 flex-grow">
+      <p className="text-gray-600 dark:text-slate-400 text-sm mb-4 grow">
         {description}
       </p>
 
