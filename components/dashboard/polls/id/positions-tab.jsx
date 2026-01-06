@@ -12,7 +12,7 @@ import {
 import { toast } from "react-toastify";
 import LoadingSpinner from "@/components/loadingspinner";
 
-export default function PositionsTab({ pollId }) {
+export default function PositionsTab({ pollId, user }) {
   const [positions, setPositions] = useState([]);
   const [newPositionName, setNewPositionName] = useState("");
   const [newPositionDescription, setNewPositionDescription] = useState("");
@@ -20,6 +20,9 @@ export default function PositionsTab({ pollId }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
+    if (user?.poll?.role !== "Owner" && user?.poll?.role !== "Admin") {
+      window.location.href = `/polls/${pollId}`;
+    }
     async function fetchPositions() {
       setLoading(true);
       try {
@@ -45,7 +48,7 @@ export default function PositionsTab({ pollId }) {
       }
     }
     fetchPositions();
-  }, [pollId]);
+  }, [pollId, user]);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);

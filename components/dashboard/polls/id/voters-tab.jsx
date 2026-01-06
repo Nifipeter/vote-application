@@ -3,7 +3,7 @@ import { CheckCircle, Plus, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-export default function VotersTab({ poll, pollId }) {
+export default function VotersTab({ poll, pollId, user }) {
   const [voters, setVoters] = useState([]);
   const [loading, setLoading] = useState(false);
   const completedVoters = poll?.completedVoters;
@@ -12,6 +12,9 @@ export default function VotersTab({ poll, pollId }) {
   }
 
   useEffect(() => {
+    if (user?.poll?.role !== "Owner" && user?.poll?.role !== "Admin") {
+      window.location.href = `/polls/${pollId}`;
+    }
     async function fetchVoters() {
       try {
         setLoading(true);
@@ -38,7 +41,7 @@ export default function VotersTab({ poll, pollId }) {
       }
     }
     fetchVoters();
-  }, [pollId]);
+  }, [pollId, user]);
 
   if (loading) return <LoadingSpinner />;
 
