@@ -30,7 +30,7 @@ export default function SettingsProfilePage({ user }) {
           <p className="text-sm text-slate-500 dark:text-slate-400">
             Display name
           </p>
-          <p className="truncate text-base font-semibold text-slate-900 dark:text-white">
+          <p className="truncate capitalize text-base font-semibold text-slate-900 dark:text-white">
             {user?.name || "Not provided"}
           </p>
           <p className="text-xs text-slate-500">Shown on your public votes</p>
@@ -38,10 +38,10 @@ export default function SettingsProfilePage({ user }) {
       </div>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {[
-          { label: "Full name", value: profile.name },
-          { label: "Email", value: profile.email },
-          { label: "Department", value: department },
-          { label: "Faculty", value: faculty },
+          { label: "Full name", value: user?.name },
+          { label: "Email", value: user?.email },
+          { label: "Department", value: user?.department },
+          { label: "Faculty", value: user?.faculty },
         ].map((item) => (
           <div
             key={item.label}
