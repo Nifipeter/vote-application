@@ -213,56 +213,6 @@ export default function SettingsTab({ pollData, user }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-4">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
-              <Users className="h-5 w-5" />
-            </div>
-            <div>
-              <p className="text-xs font-semibold text-gray-600 dark:text-slate-400 uppercase tracking-wide">
-                Total Voters
-              </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                {votesCount}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-4">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
-              <Award className="h-5 w-5" />
-            </div>
-            <div>
-              <p className="text-xs font-semibold text-gray-600 dark:text-slate-400 uppercase tracking-wide">
-                Positions
-              </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                {positionsCount}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-4">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-lg bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
-              <Mail className="h-5 w-5" />
-            </div>
-            <div>
-              <p className="text-xs font-semibold text-gray-600 dark:text-slate-400 uppercase tracking-wide">
-                Votes Cast
-              </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                {completedVotes}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {(user?.role === "Owner" || user?.role === "Admin") && (
         <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 rounded-2xl p-4 sm:p-6">
           <h3 className="text-lg font-bold text-red-900 dark:text-red-300 mb-2 flex items-center gap-2">
