@@ -62,7 +62,11 @@ export default function SettingsProfilePage({ user }) {
               {item.label}
             </p>
             <p className="text-sm font-semibold text-slate-900 dark:text-white">
-              {item.value || "Not set"}
+              {item.value
+                ? item.value.length > 20
+                  ? `${item.value.slice(0, 20)}...`
+                  : item.value
+                : "Not set"}
             </p>
           </div>
         ))}

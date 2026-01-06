@@ -1,6 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-// "use client";
-
 import SettingsProfilePage from "@/components/dashboard/settings/profile";
 import { BASE_URL } from "@/libs/config/configuration";
 import {
