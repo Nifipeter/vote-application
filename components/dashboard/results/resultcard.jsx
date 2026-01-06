@@ -2,10 +2,11 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export default function ResultCard({ poll }) {
-  const totalVoters = poll.voters?.length || 0;
-  const completedVoters = poll.completedVoters?.length || 0;
+  const { _id, userId, title, description, voters, completedVoters } = poll;
+  const totalVoters = voters?.length || 0;
+  const completedVotersCount = completedVoters?.length || 0;
   const participation =
-    totalVoters > 0 ? (completedVoters / totalVoters) * 100 : 0;
+    totalVoters > 0 ? (completedVotersCount / totalVoters) * 100 : 0;
 
   return (
     <div className="border border-gray-200   dark:border-slate-700 bg-white dark:bg-slate-800 p-6 rounded-lg shadow-sm dark:shadow-lg hover:shadow-md dark:hover:shadow-xl transition-all hover:border-gray-300 dark:hover:border-slate-600 min-h-full flex flex-col">
@@ -22,23 +23,25 @@ export default function ResultCard({ poll }) {
       </div>
 
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-        {poll.title}
+        {title}
       </h3>
       <p className="text-gray-600 dark:text-slate-400 text-sm mb-4 grow">
-        {poll.description}
+        {description}
       </p>
 
       <div className="space-y-3 mb-4">
         <div className="flex items-center justify-between text-sm">
-          <span className="text-gray-600 dark:text-slate-400">Voters</span>
+          <span className="text-gray-600 dark:text-slate-400">
+            Registered Voters
+          </span>
           <span className="font-semibold text-gray-900 dark:text-white">
-            {totalVoters}
+            {voters?.length}
           </span>
         </div>
         <div className="flex items-center justify-between text-sm">
-          <span className="text-gray-600 dark:text-slate-400">Positions</span>
+          <span className="text-gray-600 dark:text-slate-400">Total Vote</span>
           <span className="font-semibold text-gray-900 dark:text-white">
-            {poll.contestants?.length || 0}
+            {completedVoters?.length || 0}
           </span>
         </div>
       </div>

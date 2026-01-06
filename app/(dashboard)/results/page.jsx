@@ -14,11 +14,10 @@ export default async function ResultsPage() {
   });
   const response = await request.json();
   if (!request?.ok || response?.error) return redirect("/dashboard");
-  // Static sample data
   const { polls } = response;
 
   return (
-    <main className="min-h-screen px-6 mb-10 py-8 transition-colors">
+    <main className="min-h-screen px-6 pb-10 py-8 transition-colors">
       <div className="max-w-6xl mx-auto">
         <header className="mb-10">
           <div className="flex items-center gap-3 mb-4">
