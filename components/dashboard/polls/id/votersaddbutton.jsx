@@ -3,35 +3,31 @@
 import { useState } from "react";
 import { Plus, X } from "lucide-react";
 
-export default function VotersAddButton({ onAdd }) {
+export default function VotersAddButton({ pollId }) {
   const [open, setOpen] = useState(false);
   const [userId, setUserId] = useState("");
   const [error, setError] = useState("");
 
-  const closeModal = () => {
+  function closeModal() {
     setOpen(false);
     setUserId("");
     setError("");
-  };
+  }
 
-  const handleSubmit = () => {
+  async function handleSubmit() {
     if (!userId.trim()) {
-      setError("User ID is required");
-      return;
+      return setError("User ID is required");
     }
     setError("");
-    if (typeof onAdd === "function") {
-      onAdd(userId.trim());
-    }
     closeModal();
-  };
+  }
 
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white font-semibold rounded-lg transition-all flex items-center gap-2 w-full sm:w-auto justify-center shadow-sm hover:shadow"
+        className="px-4 py-2 cursor-pointer bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white font-semibold rounded-lg transition-all flex items-center gap-2 w-full sm:w-auto justify-center shadow-sm hover:shadow"
       >
         <Plus className="h-4 w-4" />
         Add Voter
