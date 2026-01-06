@@ -76,13 +76,13 @@ export default function SettingsPage({ user }) {
   const initials = toInitials(profile.name);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-linear-to-b from-slate-900 via-slate-950 to-black px-4 py-8 text-slate-100 sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-5xl flex-col gap-6">
-        <header className="rounded-3xl border border-white/10 bg-white/5 px-5 py-4 shadow-xl shadow-black/40 sm:px-6 sm:py-5">
+    <main className="min-h-screen overflow-x-hidden bg-linear-to-b from-slate-900 via-slate-950 to-black px-4 py-6 text-slate-100 sm:px-6 sm:py-8 lg:px-8">
+      <div className="mx-auto flex max-w-5xl flex-col gap-5 sm:gap-6">
+        <header className="rounded-3xl border border-white/10 bg-white/5 px-4 py-4 shadow-xl shadow-black/40 sm:px-6 sm:py-5">
           <p className="text-xs uppercase tracking-[0.16em] text-slate-400">
             User settings
           </p>
-          <div className="mt-2 flex flex-wrap items-center gap-3">
+          <div className="mt-2 flex flex-wrap items-center gap-2 sm:gap-3">
             <h1 className="text-2xl font-semibold text-white sm:text-3xl">
               Account overview
             </h1>
@@ -100,17 +100,17 @@ export default function SettingsPage({ user }) {
           </p>
         </header>
 
-        <section className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="space-y-4">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl shadow-black/40">
-              <div className="flex items-center justify-between gap-3">
+        <section className="grid gap-4 sm:gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="space-y-4 sm:space-y-5">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-5 shadow-xl shadow-black/40">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                 <div className="flex items-center gap-2 text-sm font-semibold text-white">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-cyan-200">
                     <UserRound className="h-4 w-4" />
                   </div>
                   <span>Profile</span>
                 </div>
-                <button className="rounded-lg border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-100 transition hover:border-white/20 hover:bg-white/10">
+                <button className="inline-flex w-full items-center justify-center rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-100 transition hover:border-white/20 hover:bg-white/10 sm:w-auto">
                   Edit profile
                 </button>
               </div>
@@ -158,15 +158,15 @@ export default function SettingsPage({ user }) {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl shadow-black/40">
-              <div className="flex items-center justify-between gap-3">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-5 shadow-xl shadow-black/40">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                 <div className="flex items-center gap-2 text-sm font-semibold text-white">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-cyan-200">
                     <Mail className="h-4 w-4" />
                   </div>
                   <span>Contact</span>
                 </div>
-                <button className="rounded-lg border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-100 transition hover:border-white/20 hover:bg-white/10">
+                <button className="inline-flex w-full items-center justify-center rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-100 transition hover:border-white/20 hover:bg-white/10 sm:w-auto">
                   Update contact
                 </button>
               </div>
@@ -196,15 +196,15 @@ export default function SettingsPage({ user }) {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl shadow-black/40">
-              <div className="flex items-center justify-between gap-3">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-5 shadow-xl shadow-black/40">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                 <div className="flex items-center gap-2 text-sm font-semibold text-white">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-cyan-200">
                     <ShieldCheck className="h-4 w-4" />
                   </div>
                   <span>Access & roles</span>
                 </div>
-                <button className="rounded-lg border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-100 transition hover:border-white/20 hover:bg-white/10">
+                <button className="inline-flex w-full items-center justify-center rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-100 transition hover:border-white/20 hover:bg-white/10 sm:w-auto">
                   Manage access
                 </button>
               </div>
@@ -252,15 +252,15 @@ export default function SettingsPage({ user }) {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl shadow-black/40">
-              <div className="flex items-center justify-between gap-3">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-5 shadow-xl shadow-black/40">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                 <div className="flex items-center gap-2 text-sm font-semibold text-white">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-cyan-200">
                     <Lock className="h-4 w-4" />
                   </div>
                   <span>Security</span>
                 </div>
-                <button className="rounded-lg border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-100 transition hover:border-white/20 hover:bg-white/10">
+                <button className="inline-flex w-full items-center justify-center rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-100 transition hover:border-white/20 hover:bg-white/10 sm:w-auto">
                   Manage security
                 </button>
               </div>
@@ -296,8 +296,8 @@ export default function SettingsPage({ user }) {
             </div>
           </div>
 
-          <aside className="space-y-4">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl shadow-black/40">
+          <aside className="space-y-4 sm:space-y-5">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-5 shadow-xl shadow-black/40">
               <h2 className="text-sm font-semibold text-white">At a glance</h2>
               <div className="mt-3 space-y-3">
                 {[
@@ -326,13 +326,13 @@ export default function SettingsPage({ user }) {
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200"
+                    className="flex items-center justify-between gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200"
                   >
-                    <div className="flex items-center gap-2 text-slate-300">
+                    <div className="flex items-center gap-2 text-slate-300 min-w-0">
                       {item.icon}
-                      <span>{item.label}</span>
+                      <span className="truncate">{item.label}</span>
                     </div>
-                    <span className="truncate font-semibold text-white">
+                    <span className="truncate font-semibold text-white max-w-[60%] sm:max-w-none">
                       {item.value}
                     </span>
                   </div>
