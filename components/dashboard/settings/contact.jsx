@@ -1,5 +1,21 @@
-import { Mail } from "lucide-react";
+"use client";
+
+import { Mail, Copy, Check } from "lucide-react";
+import { useState } from "react";
+
 export default function SettingsContactPage({ user }) {
+  const [copiedId, setCopiedId] = useState(false);
+
+  const copyToClipboard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedId(true);
+      setTimeout(() => setCopiedId(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
+
   return (
     <div className="rounded-3xl border border-gray-200 bg-white p-4 sm:p-5 shadow-md dark:border-slate-700 dark:bg-slate-800 dark:shadow-xl dark:shadow-black/40">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
@@ -9,17 +25,15 @@ export default function SettingsContactPage({ user }) {
           </div>
           <span>Contact</span>
         </div>
-        <button className="inline-flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-slate-800 transition hover:border-gray-300 hover:bg-gray-50 sm:w-auto dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:border-slate-500 dark:hover:bg-slate-600">
-          Update contact
-        </button>
       </div>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {[
-          { label: "Primary email", value: user?.email },
-          { label: "Account ID", value: user?._id },
+          { label: "Primary email", value: user?.email, copyable: false },
+          { label: "Account ID", value: user?._id, copyable: true },
           {
             label: "Auth provider",
             value: user?.googleId ? "Google" : "Email",
+            copyable: false,
           },
         ].map((item) => (
           <div
@@ -29,9 +43,24 @@ export default function SettingsContactPage({ user }) {
             <p className="text-xs uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
               {item.label}
             </p>
-            <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">
-              {item.value || "Not set"}
-            </p>
+            <div className="flex items-center justify-between gap-2">
+              <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">
+                {item.value || "Not set"}
+              </p>
+              {item.copyable && item.value && (
+                <button
+                  onClick={() => copyToClipboard(item.value)}
+                  className="shrink-0 p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+                  title="Copy ID"
+                >
+                  {copiedId ? (
+                    <Check className="h-4 w-4 text-green-600 dark:text-green-400" />
+                  ) : (
+                    <Copy className="h-4 w-4 text-slate-500 dark:text-slate-400" />
+                  )}
+                </button>
+              )}
+            </div>
           </div>
         ))}
       </div>
