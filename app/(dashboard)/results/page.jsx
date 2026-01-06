@@ -15,64 +15,7 @@ export default async function ResultsPage() {
   const response = await request.json();
   if (!request?.ok || response?.error) return redirect("/dashboard");
   // Static sample data
-  const polls = [
-    {
-      _id: "1",
-      title: "Student President Election 2025",
-      description: "Vote for the next student president of our institution",
-      status: "Completed",
-      voters: Array(150).fill(null),
-      completedVoters: Array(145).fill(null),
-      contestants: [
-        {
-          _id: "pos1",
-          position: "President",
-          candidates: [
-            { _id: "c1", name: "Alice Johnson", votes: 62 },
-            { _id: "c2", name: "Bob Smith", votes: 55 },
-            { _id: "c3", name: "Charlie Davis", votes: 28 },
-          ],
-        },
-        {
-          _id: "pos2",
-          position: "Vice President",
-          candidates: [
-            { _id: "c4", name: "Diana Wilson", votes: 71 },
-            { _id: "c5", name: "Eve Martinez", votes: 48 },
-            { _id: "c6", name: "Frank Brown", votes: 26 },
-          ],
-        },
-        {
-          _id: "pos3",
-          position: "Treasurer",
-          candidates: [
-            { _id: "c7", name: "Grace Lee", votes: 83 },
-            { _id: "c8", name: "Henry Garcia", votes: 40 },
-            { _id: "c9", name: "Ivy Rodriguez", votes: 22 },
-          ],
-        },
-      ],
-    },
-    {
-      _id: "2",
-      title: "Faculty Award Voting",
-      description: "Select the best faculty member of the year",
-      status: "Active",
-      voters: Array(200).fill(null),
-      completedVoters: Array(87).fill(null),
-      contestants: [
-        {
-          _id: "pos4",
-          position: "Best Professor Award",
-          candidates: [
-            { _id: "c10", name: "Dr. Michael Anderson", votes: 45 },
-            { _id: "c11", name: "Prof. Sarah Taylor", votes: 32 },
-            { _id: "c12", name: "Dr. James Wilson", votes: 10 },
-          ],
-        },
-      ],
-    },
-  ];
+  const { polls } = response;
 
   return (
     <main className="min-h-screen px-6 mb-10 py-8 transition-colors">

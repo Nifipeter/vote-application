@@ -7,12 +7,6 @@ export default function ResultCard({ poll }) {
   const participation =
     totalVoters > 0 ? (completedVoters / totalVoters) * 100 : 0;
 
-  // Get winner from first position
-  const firstPosition = poll.contestants?.[0];
-  const winner = firstPosition?.candidates?.sort(
-    (a, b) => (b.votes || 0) - (a.votes || 0)
-  )[0];
-
   return (
     <div className="border border-gray-200   dark:border-slate-700 bg-white dark:bg-slate-800 p-6 rounded-lg shadow-sm dark:shadow-lg hover:shadow-md dark:hover:shadow-xl transition-all hover:border-gray-300 dark:hover:border-slate-600 min-h-full flex flex-col">
       <div className="flex items-center gap-2 mb-3">
@@ -47,16 +41,6 @@ export default function ResultCard({ poll }) {
             {poll.contestants?.length || 0}
           </span>
         </div>
-        {winner && (
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-600 dark:text-slate-400">
-              Leading: {winner.name}
-            </span>
-            <span className="font-semibold text-amber-600 dark:text-amber-400">
-              {winner.votes} votes
-            </span>
-          </div>
-        )}
       </div>
 
       <div className="mt-auto pt-4 space-y-3 border-t border-gray-200 dark:border-slate-700">
