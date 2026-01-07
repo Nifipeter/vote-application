@@ -13,10 +13,15 @@ export default function ResultHeader({ poll }) {
                     : "bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-400"
                 }`}
               >
-                {poll.status}
+                {new Date() < new Date(poll?.startDate)
+                  ? "Upcoming"
+                  : new Date() < new Date(poll?.endDate)
+                  ? "Active"
+                  : "Completed"}
               </span>
               <span className="text-sm text-gray-600 dark:text-slate-400">
-                {poll.startDate} - {poll.endDate}
+                {new Date(poll.startDate).toLocaleDateString()} -{" "}
+                {new Date(poll.endDate).toLocaleDateString()}
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">
@@ -39,7 +44,7 @@ export default function ResultHeader({ poll }) {
                   Total Voters
                 </p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {123}
+                  {poll.voters?.length || 0}
                 </p>
               </div>
             </div>
@@ -55,7 +60,7 @@ export default function ResultHeader({ poll }) {
                   Votes Cast
                 </p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {10}
+                  {poll.completedVoters?.length || 0}
                 </p>
               </div>
             </div>
@@ -71,7 +76,7 @@ export default function ResultHeader({ poll }) {
                   Positions
                 </p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {5 || 0}
+                  {poll.contestants?.length || 0}
                 </p>
               </div>
             </div>
@@ -87,7 +92,10 @@ export default function ResultHeader({ poll }) {
                   Participation
                 </p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {Math.round(50)}%
+                  {Math.round(
+                    (poll.completedVoters?.length / poll.voters?.length) * 100
+                  ) || 0}
+                  %
                 </p>
               </div>
             </div>
