@@ -75,11 +75,9 @@ export default function ResultPosition({ poll }) {
                     return (
                       <tr
                         key={candidate._id}
-                        className={`hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors ${
-                          isWinner
-                            ? "bg-amber-50 dark:bg-amber-900/10"
-                            : "bg-white dark:bg-slate-800"
-                        }`}
+                        className={
+                          "bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
+                        }
                       >
                         {/* Rank */}
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -138,10 +136,7 @@ export default function ResultPosition({ poll }) {
                           <div className="w-32">
                             <div className="h-2 bg-gray-200 dark:bg-slate-700 rounded-sm overflow-hidden">
                               <div
-                                className={`h-full ${
-                                  isWinner
-                                    ? "bg-amber-600 dark:bg-amber-500"
-                                    : "bg-indigo-600 dark:bg-indigo-500"
+                                className={`h-full bg-indigo-600 dark:bg-indigo-500"
                                 }`}
                                 style={{ width: `${percentage}%` }}
                               />
