@@ -1,13 +1,7 @@
 "use client";
-import {
-  ArrowRight,
-  CheckCircle2,
-  TrendingUp,
-  Shield,
-  Users,
-  Play,
-} from "lucide-react";
+import { ArrowRight, TrendingUp, Shield, Users } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
+import { signIn } from "next-auth/react";
 
 export default function HeroSection() {
   return (
@@ -47,7 +41,14 @@ export default function HeroSection() {
 
               <div className="space-y-4 sm:space-y-6">
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                  <button className="group cursor-pointer relative px-6 sm:px-8 py-3 sm:py-4 bg-linear-to-r from-blue-600 to-cyan-600 dark:from-blue-500 dark:to-cyan-500 text-white rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-xl shadow-blue-600/30 hover:shadow-2xl hover:shadow-blue-600/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3">
+                  <button
+                    onClick={() => {
+                      signIn("google", {
+                        callbackUrl: "/dashboard",
+                      });
+                    }}
+                    className="group cursor-pointer relative px-6 sm:px-8 py-3 sm:py-4 bg-linear-to-r from-blue-600 to-cyan-600 dark:from-blue-500 dark:to-cyan-500 text-white rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-xl shadow-blue-600/30 hover:shadow-2xl hover:shadow-blue-600/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3"
+                  >
                     <FcGoogle className="w-5 h-5" />
                     Start Voting
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
