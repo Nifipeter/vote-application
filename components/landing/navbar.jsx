@@ -12,7 +12,7 @@ export default function Navbar() {
             V
           </div>
           <div className="hidden sm:block leading-tight">
-            <p className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+            <p className="text-sm font-serif font-bold text-zinc-900 dark:text-zinc-100">
               Ballot Right
             </p>
             <p className="text-xs text-zinc-500 dark:text-zinc-400">
