@@ -18,7 +18,8 @@ export const metadata = {
     default: "Ballot Right",
     template: "%s | Ballot Right",
   },
-  description: "Voting Done Right.",
+  description:
+    "BallotRight is a secure, reliable, and easy-to-use digital voting platform designed to empower every voter. With BallotRight, casting your vote has never been simpler — whether it’s for school elections, community polls, or organizational decisions, your voice counts and your choice is protected.",
   keywords: ["Vote", "Voting", "Ballot", "Balloting", "Poll", "Polls", "Right"],
 };
 
