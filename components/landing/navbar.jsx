@@ -45,7 +45,7 @@ export default function Navbar() {
           <button
             onClick={() => {
               signIn("google", {
-                callbackUrl: "/dashboard",
+                callbackUrl: "/polls",
               });
             }}
             className="rounded-lg cursor-pointer bg-zinc-900 dark:bg-white dark:text-black  px-5 py-2.5 text-sm font-semibold text-white hover:bg-zinc-800 dark:hover:bg-zinc-600 transition shadow-md hover:shadow-lg shrink-0 flex items-center gap-2"

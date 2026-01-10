@@ -44,7 +44,7 @@ export default function HeroSection() {
                   <button
                     onClick={() => {
                       signIn("google", {
-                        callbackUrl: "/dashboard",
+                        callbackUrl: "/polls",
                       });
                     }}
                     className="group cursor-pointer relative px-6 sm:px-8 py-3 sm:py-4 bg-linear-to-r from-blue-600 to-cyan-600 dark:from-blue-500 dark:to-cyan-500 text-white rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-xl shadow-blue-600/30 hover:shadow-2xl hover:shadow-blue-600/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3"
