@@ -13,7 +13,7 @@ export default async function ResultsPage() {
     },
   });
   const response = await request.json();
-  if (!request?.ok || response?.error) return redirect("/dashboard");
+  if (!request?.ok || response?.error) return redirect("/polls");
   const { polls } = response;
 
   return (

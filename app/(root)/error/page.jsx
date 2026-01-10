@@ -48,7 +48,7 @@ export default function Page() {
             Go Home
           </Link>
           <Link
-            href="/dashboard"
+            href="/polls"
             className="px-6 py-3 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded-lg font-medium hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
           >
             Dashboard

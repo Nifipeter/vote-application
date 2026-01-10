@@ -13,7 +13,7 @@ export default async function Page({ params }) {
     },
   });
   const response = await request.json();
-  if (!request?.ok || response?.error) return redirect("/dashboard/results");
+  if (!request?.ok || response?.error) return redirect("/polls/results");
   // Static sample poll data
   const { poll } = response;
   return (

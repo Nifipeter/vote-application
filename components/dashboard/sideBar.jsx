@@ -12,10 +12,10 @@ export default function SideBar({
 
   const menuItems = [
     {
-      icon: LayoutDashboard,
-      label: "Dashboard",
-      active: pathname.includes("dashboard"),
-      href: "/dashboard",
+      icon: FileText,
+      label: "My Polls",
+      active: pathname.includes("polls") && !pathname.includes("create"),
+      href: "/polls",
     },
     {
       icon: PlusCircle,
@@ -23,13 +23,6 @@ export default function SideBar({
       active: pathname.includes("/polls/create"),
       href: "/polls/create",
     },
-    {
-      icon: FileText,
-      label: "My Polls",
-      active: pathname.includes("polls") && !pathname.includes("create"),
-      href: "/polls",
-    },
-
     {
       icon: BarChart3,
       label: "Results",

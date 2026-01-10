@@ -14,7 +14,7 @@ export default async function Page() {
     cache: "no-store",
   });
   const response = await request.json();
-  if (!request.ok || response.error) return redirect("/dashboard");
+  if (!request.ok || response.error) return redirect("/polls");
   console.log(response);
   const { polls } = response;
   //   {
@@ -87,12 +87,6 @@ export default async function Page() {
                 Create a Poll
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <a
-                href="/dashboard"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-gray-300 dark:border-slate-700 text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-800 font-semibold transition"
-              >
-                Back to Dashboard
-              </a>
             </div>
           </div>
         )}
