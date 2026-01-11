@@ -76,6 +76,7 @@ export const PUT = async function PUT(req) {
     await connectDatabase();
     // check if the user exist
     const user = await User.findById(userId);
+    // if the user dosent exist
     if (!user) {
       return NextResponse.json(
         { error: "User does not exist" },
