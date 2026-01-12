@@ -76,7 +76,7 @@ export const PUT = async function PUT(req) {
     await connectDatabase();
     // check if the user exist
     const user = await User.findById(userId);
-    // if the user dosent exist
+    // if the user doesn't exist
     if (!user) {
       return NextResponse.json(
         { error: "User does not exist" },
@@ -85,9 +85,22 @@ export const PUT = async function PUT(req) {
         }
       );
     }
+    // edit the user department and faculty
+    let editing = false;
+    if (faculty.trim() && faculty.trim() === user?.faculty.trim()) {
+      user.faculty = faculty;
+      editing = true;
+    }
+    if (department.trim() && department.trim() === user?.department.trim()) {
+      user.department = department;
+      editing = true;
+    }
+    if (editing) {
+      await user.save();
+    }
     //success message
     return NextResponse.json(
-      { message: "Successfully updated user profile" },
+      { message: "Successfully updated user profile", user },
       {
         status: 200,
       }
