@@ -76,13 +76,22 @@ export default function PollsCard({ poll }) {
         </div>
       </div>
 
-      <Link
-        href={`/polls/${_id}`}
-        className="w-full rounded-lg border cursor-pointer border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-2 text-sm font-medium text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-600 flex items-center justify-center gap-2 transition"
-      >
-        View Poll
-        <ArrowRight className="h-4 w-4" />
-      </Link>
+      {new Date(endDate) < new Date() ? (
+        <button
+          disabled
+          className="w-full rounded-lg border cursor-pointer border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-2 text-sm font-medium text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-600 flex items-center justify-center gap-2 transition"
+        >
+          Voting Ended
+        </button>
+      ) : (
+        <Link
+          href={`/polls/${_id}`}
+          className="w-full rounded-lg border cursor-pointer border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-2 text-sm font-medium text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-600 flex items-center justify-center gap-2 transition"
+        >
+          View Poll
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      )}
     </div>
   );
 }
