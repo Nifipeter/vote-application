@@ -17,41 +17,6 @@ export default async function Page() {
   if (!request.ok || response.error) return redirect("/polls");
   console.log(response);
   const { polls } = response;
-  //   {
-  //     id: 1,
-  //     title: "Q1 Product Roadmap",
-  //     description: "Vote on the features for our Q1 release",
-  //     createdAt: "Dec 1, 2025",
-  //     creatorName: "Alice Johnson",
-  //     participants: 23,
-  //     status: "Active",
-  //     progress: 65,
-  //     category: "Product",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Team Offsite Location",
-  //     description: "Where should we hold our next team gathering?",
-  //     createdAt: "Dec 5, 2025",
-  //     creatorName: "Bob Smith",
-  //     participants: 15,
-  //     status: "Active",
-  //     progress: 78,
-  //     category: "People",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Support Response Target",
-  //     description: "What response time goal should we aim for?",
-  //     createdAt: "Dec 10, 2025",
-  //     creatorName: "Charlie Brown",
-  //     participants: 18,
-  //     status: "Closing Soon",
-  //     progress: 42,
-  //     category: "Customer",
-  //   },
-  // ];
-
   const hasPolls = Array.isArray(response?.polls) && response.polls.length > 0;
   const list = hasPolls ? response.polls : polls;
 
