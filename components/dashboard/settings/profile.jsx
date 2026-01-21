@@ -169,7 +169,7 @@ export default function SettingsProfilePage({ user }) {
                 name="department"
                 value={formData.department}
                 onChange={handleInputChange}
-                className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-slate-900 placeholder-slate-400 transition focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500"
+                className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-slate-900 placeholder-slate-400 transition focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500"
                 placeholder="Enter department"
               />
             </div>
@@ -182,7 +182,7 @@ export default function SettingsProfilePage({ user }) {
                 name="faculty"
                 value={formData.faculty}
                 onChange={handleInputChange}
-                className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-slate-900 placeholder-slate-400 transition focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500"
+                className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-slate-900 placeholder-slate-400 transition focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500"
                 placeholder="Enter faculty"
               />
             </div>
@@ -191,13 +191,13 @@ export default function SettingsProfilePage({ user }) {
           <div className="flex gap-3 pt-2">
             <button
               onClick={handleSave}
-              className="flex-1 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+              className="flex-1 cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
             >
               Save Changes
             </button>
             <button
               onClick={handleCancel}
-              className="flex-1 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition hover:bg-gray-50 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
+              className="flex-1 cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition hover:bg-gray-50 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
             >
               Cancel
             </button>
