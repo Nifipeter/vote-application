@@ -1,7 +1,7 @@
 import { CheckCircle2, Clock, Trophy, Users } from "lucide-react";
 export default function ResultHeader({ poll }) {
   return (
-    <div className="bg-linear-to-r from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 border-b border-gray-200 dark:border-slate-700 px-4 sm:px-6 py-6 sm:py-8">
+    <div className="bg-linear-to-r from-slate-50 to-slate-50 dark:from-slate-900 dark:to-slate-800 border-b border-gray-200 dark:border-slate-700 px-4 sm:px-6 py-6 sm:py-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row items-start justify-between gap-4 mb-4">
           <div>
