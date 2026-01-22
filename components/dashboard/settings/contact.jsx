@@ -1,21 +1,11 @@
 "use client";
 
+import copyToClipboard from "@/libs/copytoclipboard";
 import { Mail, Copy, Check } from "lucide-react";
 import { useState } from "react";
 
 export default function SettingsContactPage({ user }) {
   const [copiedId, setCopiedId] = useState(false);
-
-  const copyToClipboard = async (text) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopiedId(true);
-      setTimeout(() => setCopiedId(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy:", err);
-    }
-  };
-
   return (
     <div className="rounded-3xl border border-gray-200 bg-white p-4 sm:p-5 shadow-md dark:border-slate-700 dark:bg-slate-800 dark:shadow-xl dark:shadow-black/40">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
@@ -49,8 +39,12 @@ export default function SettingsContactPage({ user }) {
               </p>
               {item.copyable && item.value && (
                 <button
-                  onClick={() => copyToClipboard(item.value)}
-                  className="shrink-0 p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+                  onClick={async () => {
+                    await copyToClipboard(item.value);
+                    setCopiedId(true);
+                    setTimeout(() => setCopiedId(false), 2000);
+                  }}
+                  className="shrink-0 cursor-pointer p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
                   title="Copy ID"
                 >
                   {copiedId ? (
