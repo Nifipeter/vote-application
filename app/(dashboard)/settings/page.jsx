@@ -7,7 +7,6 @@ import { redirect } from "next/dist/server/api-utils";
 import { cookies } from "next/headers";
 
 export default async function Page() {
-  // send a request to the backend to get the user data
   const request = await fetch(`${BASE_URL}/api/user`, {
     method: "GET",
     headers: {
@@ -15,7 +14,6 @@ export default async function Page() {
       Cookie: (await cookies()).toString(),
     },
   });
-  // get the user data from the response
   const response = await request.json();
   if (!request.ok || response.error) return redirect("/");
   const { user } = response;

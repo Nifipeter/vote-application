@@ -83,7 +83,7 @@ export default function SettingsProfilePage({ user }) {
         </div>
         <button
           onClick={() => setIsEditing(!isEditing)}
-          className="inline-flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-slate-800 transition hover:border-gray-300 hover:bg-gray-50 sm:w-auto dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:border-slate-500 dark:hover:bg-slate-600"
+          className="inline-flex cursor-pointer w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-slate-800 transition hover:border-gray-300 hover:bg-gray-50 sm:w-auto dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:border-slate-500 dark:hover:bg-slate-600"
         >
           {isEditing ? "Cancel" : "Edit profile"}
         </button>
@@ -155,7 +155,7 @@ export default function SettingsProfilePage({ user }) {
                 <label className="block text-xs uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400 mb-2">
                   Email
                 </label>
-                <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                <p className="text-sm font-semibold truncate text-slate-900 dark:text-white">
                   {user?.email || "Not set"}
                 </p>
               </div>
