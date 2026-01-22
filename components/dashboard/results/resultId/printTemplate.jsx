@@ -5,6 +5,10 @@ export default function PrintTemplate({ poll }) {
     day: "numeric",
   });
 
+  function getUserInfo(userId) {
+    return poll.voters.find((voter) => voter._id === userId);
+  }
+
   // Calculate statistics
   const totalParticipants = poll.voters ? poll.voters.length : 0;
   const totalVotesCast = poll.contestants
@@ -87,8 +91,7 @@ export default function PrintTemplate({ poll }) {
           }
 
           th {
-            background: #000000;
-            color: white;
+            color: black;
             border: 1px solid #000000;
             padding: 14px 12px;
             text-align: left;
@@ -274,7 +277,9 @@ export default function PrintTemplate({ poll }) {
 
                       return (
                         <tr key={candidate._id}>
-                          <td>{candidate.name}</td>
+                          <td>
+                            {getUserInfo(candidate.userId)?.name || "Unknown"}
+                          </td>
                           <td style={{ textAlign: "center" }}>
                             {candidate.votes || 0}
                           </td>
