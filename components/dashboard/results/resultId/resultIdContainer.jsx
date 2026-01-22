@@ -37,6 +37,7 @@ export default function ResultIdContainer({ poll: polls, pollId }) {
   const handleExportPDF = async () => {
     alert("PDF export coming soon!");
   };
+  console.log(poll);
 
   return (
     <>
