@@ -12,7 +12,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
       { error: "Unauthorized Access" },
       {
         status: 400,
-      }
+      },
     );
   }
   const authorizingUser = req?.auth?.user?.id;
@@ -24,7 +24,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
       { error: "Poll id not found" },
       {
         status: 400,
-      }
+      },
     );
   }
   // if userId is not defined
@@ -33,7 +33,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
       { error: "User id is missing" },
       {
         status: 400,
-      }
+      },
     );
   }
   // if authorizingUser is not defined
@@ -42,7 +42,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
       { error: "Unauthorized Access" },
       {
         status: 401,
-      }
+      },
     );
   }
   try {
@@ -55,7 +55,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
         { error: "User does not exist" },
         {
           status: 400,
-        }
+        },
       );
     }
     // check if the person who want to authorize exist in the database
@@ -65,7 +65,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
         { error: "You dont exist" },
         {
           status: 400,
-        }
+        },
       );
     }
     // check if the poll exist
@@ -75,31 +75,42 @@ export const DELETE = auth(async function DELETE(req, { params }) {
         { error: "Poll not found" },
         {
           status: 400,
-        }
+        },
+      );
+    }
+    // if the voting as started the admin should not have right to be able to remove user
+    if (new Date(poll?.startDate) <= new Date()) {
+      return NextResponse.json(
+        {
+          error: "Voting has started already",
+        },
+        {
+          status: 400,
+        },
       );
     }
     // check if the user and authorizingUser exist
     const userExistInPoll = poll?.voters.find(
-      (voter) => voter.toString() === userId.toString()
+      (voter) => voter.toString() === userId.toString(),
     );
     if (!userExistInPoll) {
       return NextResponse.json(
         { error: "User does not belong to this poll" },
         {
           status: 400,
-        }
+        },
       );
     }
     // check if the person authorizing exist
     const authorizingUserExistInPoll = poll?.voters.find(
-      (voter) => voter.toString() === authorizingUser.toString()
+      (voter) => voter.toString() === authorizingUser.toString(),
     );
     if (!authorizingUserExistInPoll) {
       return NextResponse.json(
         { error: "Admin does not belong to this poll" },
         {
           status: 400,
-        }
+        },
       );
     }
     // check if the authorizing user has a role in the poll
@@ -111,7 +122,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
         { error: "User does not have permission to edit this poll" },
         {
           status: 400,
-        }
+        },
       );
     }
     // if the user role is not admin or owner return unauthorized access
@@ -123,12 +134,12 @@ export const DELETE = auth(async function DELETE(req, { params }) {
         { error: "You dont have the right to edit this group settings" },
         {
           status: 400,
-        }
+        },
       );
     }
     // check if the user is a candidate
     const userIsCandidate = user?.voteInformation?.find(
-      (info) => info?.pollId?.toString() === pollsId.toString()
+      (info) => info?.pollId?.toString() === pollsId.toString(),
     );
     // get userIsCandidate
     if (!userIsCandidate) {
@@ -136,7 +147,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
         { error: "Invalid Parameters" },
         {
           status: 400,
-        }
+        },
       );
     }
 
@@ -150,7 +161,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
         },
         {
           status: 400,
-        }
+        },
       );
     }
     // check if the user exist in a contestant
@@ -158,10 +169,8 @@ export const DELETE = auth(async function DELETE(req, { params }) {
       pollId: pollsId,
       "candidates.userId": new mongoose.Types.ObjectId(userId),
     });
-    console.log(contestant);
 
     if (contestant) {
-      console.log(true);
       await Contestant.findOneAndUpdate(
         {
           pollId: new mongoose.Types.ObjectId(pollsId),
@@ -171,7 +180,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
           $pull: {
             candidates: { userId: new mongoose.Types.ObjectId(userId) },
           },
-        }
+        },
       );
     }
     //remove the user from the polls
@@ -179,7 +188,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
     await poll.save();
     // remove the poll from the user's voteInformation
     user.voteInformation = user.voteInformation.filter(
-      (info) => info.pollId.toString() !== pollsId.toString()
+      (info) => info.pollId.toString() !== pollsId.toString(),
     );
     await user.save();
     //success
@@ -190,7 +199,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
       },
       {
         status: 200,
-      }
+      },
     );
   } catch (err) {
     console.error(err);
@@ -198,7 +207,7 @@ export const DELETE = auth(async function DELETE(req, { params }) {
       { error: "An error occurred while removing user for the poll" },
       {
         status: 400,
-      }
+      },
     );
   }
 });
