@@ -1,10 +1,4 @@
-import {
-  Users,
-  UserPlus,
-  MoreVertical,
-  CheckCircle,
-  Clock,
-} from "lucide-react";
+import { Users, UserPlus, CheckCircle, Clock } from "lucide-react";
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", {
@@ -110,7 +104,7 @@ export default function PollsIdHeader({ pollData }) {
                   Total Voters
                 </p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {voters?.length}
+                  {voters?.length || 0}
                 </p>
               </div>
             </div>
