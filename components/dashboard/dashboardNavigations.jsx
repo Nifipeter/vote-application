@@ -43,7 +43,7 @@ export default function DashboardNavigations({ children, session }) {
 
               <button
                 onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-                className="hidden lg:flex items-center gap-2 rounded-lg px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="hidden cursor-pointer lg:flex items-center gap-2 rounded-lg px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
                 {sidebarCollapsed ? (
                   <>

@@ -35,6 +35,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           googleId: profile?.sub,
         });
       }
+      if (userExist?.image !== user?.image) {
+        userExist.image = user?.image;
+        await userExist.save();
+      }
       return true;
     },
     async jwt({ token, user }) {

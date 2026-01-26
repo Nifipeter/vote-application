@@ -1,5 +1,10 @@
-import { BarChart3, Settings, LogOut } from "lucide-react";
-import { LayoutDashboard, FileText, PlusCircle } from "lucide-react";
+import {
+  BarChart3,
+  Settings,
+  LogOut,
+  FileText,
+  PlusCircle,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -37,7 +42,6 @@ export default function SideBar({
       } lg:translate-x-0 ${sidebarCollapsed ? "lg:w-20" : "lg:w-64"}`}
     >
       <div className="flex h-full flex-col">
-        {/* Logo */}
         <div className="flex items-center gap-3 border-b border-gray-200 dark:border-gray-700 px-6 py-5">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600 dark:bg-indigo-500 shrink-0">
             <BarChart3 className="h-6 w-6 text-white" />
@@ -51,7 +55,6 @@ export default function SideBar({
           </span>
         </div>
 
-        {/* Navigation */}
         <nav className="flex-1 space-y-1 px-4 py-6">
           <div
             className={`mb-4 px-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 ${
@@ -82,7 +85,6 @@ export default function SideBar({
           ))}
         </nav>
 
-        {/* Settings & Logout */}
         <div className="border-t border-gray-200 dark:border-gray-700 p-4">
           <div
             className={`mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 ${
