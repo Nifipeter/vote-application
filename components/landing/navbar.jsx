@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { signIn } from "next-auth/react";
 import Toggle from "../toggle";
@@ -8,8 +9,12 @@ export default function Navbar() {
     <nav className="fixed top-4 left-4 right-4 z-50 ">
       <div className="border border-zinc-200 dark:border-zinc-700 bg-white/80 dark:bg-zinc-800/80 backdrop-blur-md rounded-2xl shadow-lg max-w-5xl mx-auto px-6 sm:px-8 py-3.5 flex items-center justify-between w-full">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="flex h-9 w-9 items-center justify-center shrink-0 rounded-lg bg-linear-to-br from-blue-600 to-blue-700 text-base font-bold text-white">
-            BR
+          <div className="flex  items-center justify-center shrink-0 rounded-lg  text-base font-bold text-white">
+            <img
+              src="/logo-only.png"
+              className="h-12 w-12 rounded-2xl"
+              alt="logo"
+            />
           </div>
           <div className="hidden sm:block leading-tight">
             <p className="text-sm font-serif font-bold text-zinc-900 dark:text-zinc-100">
