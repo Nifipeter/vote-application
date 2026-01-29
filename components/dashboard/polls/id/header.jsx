@@ -109,10 +109,10 @@ export default function PollsIdHeader({ pollData }) {
 
           <button
             onClick={() => setOverlay(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white rounded-lg font-semibold text-sm transition-colors shadow-sm"
+            className="inline-flex cursor-pointer items-center justify-center h-10 w-10 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white rounded-lg transition-colors shadow-sm"
+            title="Share Poll"
           >
-            <Share2 className="h-4 w-4" />
-            Share Poll
+            <Share2 className="h-5 w-5" />
           </button>
         </div>
 
