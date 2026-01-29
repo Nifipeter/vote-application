@@ -1,58 +1,44 @@
 "use client";
 
-import { motion, Variants } from "motion/react";
-
-function LoadingThreeDotsJumping() {
-  const dotVariants = {
-    jump: {
-      transform: "translateY(-30px)",
-      transition: {
-        duration: 0.8,
-        repeat: Infinity,
-        repeatType: "mirror",
-        ease: "easeInOut",
-      },
-    },
-  };
-
+export default function Loading() {
   return (
-    <motion.div
-      animate="jump"
-      transition={{ staggerChildren: -0.2, staggerDirection: -1 }}
-      className="container"
-    >
-      <motion.div className="dot" variants={dotVariants} />
-      <motion.div className="dot" variants={dotVariants} />
-      <motion.div className="dot" variants={dotVariants} />
-      <StyleSheet />
-    </motion.div>
+    <div className="flex items-center justify-center h-full w-full">
+      <div className="loader"></div>
+    </div>
   );
 }
 
-/**
- * ==============   Styles   ================
- */
-function StyleSheet() {
+export function StyleSheet() {
   return (
-    <style>
-      {`
-            .container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-            }
-
-            .dot {
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background-color: #ff0088;
-                will-change: transform;
-            }
-            `}
-    </style>
-  );
+    <style>{`
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display:grid;
+  -webkit-mask: conic-gradient(from 15deg,#0000,#000);
+  animation: l26 1s infinite steps(12);
+}
+.loader,
+.loader:before,
+.loader:after{
+  background:
+    radial-gradient(closest-side at 50% 12.5%,
+     #f03355 96%,#0000) 50% 0/20% 80% repeat-y,
+    radial-gradient(closest-side at 12.5% 50%,
+     #f03355 96%,#0000) 0 50%/80% 20% repeat-x;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  grid-area: 1/1;
+  transform: rotate(30deg);
+}
+.loader:after {
+  transform: rotate(60deg);
 }
 
-export default LoadingThreeDotsJumping;
+@keyframes l26 {
+  100% {transform:rotate(1turn)}
+}`}</style>
+  );
+}
