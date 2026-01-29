@@ -1,10 +1,14 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: { absolute: "Error - Something went wrong" },
+  description: "An unexpected error occurred. Please try again later.",
+};
+
 export default function Page() {
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950 flex items-center justify-center px-4">
       <div className="text-center max-w-md space-y-8">
-        {/* Error Icon */}
         <div className="flex justify-center">
           <div className="relative">
             <div className="w-20 h-20 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center">
@@ -25,7 +29,6 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Error Message */}
         <div className="space-y-3">
           <h1 className="text-4xl font-bold text-zinc-900 dark:text-white">
             Oops!
@@ -39,7 +42,6 @@ export default function Page() {
           </p>
         </div>
 
-        {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/"
@@ -51,11 +53,10 @@ export default function Page() {
             href="/polls"
             className="px-6 py-3 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded-lg font-medium hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
           >
-            Dashboard
+            Back to Polls
           </Link>
         </div>
 
-        {/* Error Code */}
         <p className="text-xs text-zinc-400 dark:text-zinc-600 font-mono">
           ERROR_CODE: 500
         </p>
